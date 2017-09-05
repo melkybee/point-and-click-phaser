@@ -173,7 +173,7 @@ Game.prototype = {
         // preload all of the game assets
 
         // menu assets
-        // game.load.image('title', 'img/title.png');
+        game.load.image('title', 'img/title.png');
         game.load.image('playButton', 'img/play-btn.png', 180, 44);
         game.load.image('mainMenuButton', 'img/main-menu-btn.png', 180, 44);
 
@@ -181,9 +181,12 @@ Game.prototype = {
         game.load.spritesheet('chibi-walk', 'img/chibi-walk.png', 46, 76, 2);
 
         // background assets
+        game.load.image('bg-title', 'img/bg-title.png', 720, 480);
         game.load.image('bg-spaceship', 'img/bg-spaceship.png', 720, 480);
         game.load.image('bg-lake', 'img/bg-lake.png', 720, 480);
         game.load.image('bg-tent', 'img/bg-tent.png', 720, 480);
+        game.load.image('bg-ending-1', 'img/bg-ending-1.png', 720, 480);
+        game.load.image('bg-ending-2', 'img/bg-ending-2.png', 720, 480);
 
         // items for inventory
         game.load.image('socks', 'img/items/socks.png', 32, 42);

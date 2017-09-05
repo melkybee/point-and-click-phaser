@@ -39,7 +39,7 @@ Player.prototype = {
         this.isMoving = true;
 
         //  300 = 300 pixels per second = the speed the sprite will move at, regardless of the distance it has to travel
-        duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 100) * 1000;
+        duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 400) * 1000;
 
         // limits
         if (pointerX < 70) {

@@ -30,7 +30,7 @@ SceneLake.prototype = {
         this.items = game.add.group();
 
         // sign
-        sign = this.items.create(386, 380, 'sign');
+        sign = this.items.create(410, 380, 'sign');
         sign.anchor.setTo(0,0);
         sign.inputEnabled = true;
         sign.events.onInputDown.add(this.interactItem, this);
@@ -80,7 +80,7 @@ SceneLake.prototype = {
             }
             menuOpened = true;
             // open menu-do-2
-            menuDo3 = this.interactItemMenu.create(lake.x + 300, lake.y - 140, 'menu-do-3');
+            menuDo3 = this.interactItemMenu.create(lake.x + 200, lake.y - 100, 'menu-do-3');
 
             // close
             this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 32, 'menu-close-btn');

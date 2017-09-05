@@ -258,9 +258,11 @@ SceneSpaceship.prototype = {
                         if (drankWater) {
                             // GO TO ENDING - SPACESHIP AS MUTANT
                             console.log('GO TO ENDING - SPACESHIP AS MUTANT');
+                            game.state.start('ending-2');
                         } else {
                             // GO TO ENDING - SPACESHIP AS HUMAN
                             console.log('GO TO ENDING - SPACESHIP AS HUMAN');
+                            game.state.start('ending-1');
                         }
 
 
