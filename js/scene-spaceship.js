@@ -54,8 +54,19 @@ SceneSpaceship.prototype = {
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
                 console.log('clicked on pickUpPointer = ' , pickUpPointer);
-//                this.game.collectItem(this.player, this.item);
-            }, {game:game, player:player, item:pointer});
+                console.log('game = ' , this.game);
+                console.log('player = ' , this.player);
+                console.log('item = ' , this.item);
+                
+                this.inventory[this.item.key].count = 1;
+                this.items.remove(this.item);
+                console.log('inventory = ' , this.inventory);
+
+                this.interactItemMenu.remove(this.menu);
+                this.interactItemMenu.remove(this.lookAtButton);
+                this.interactItemMenu.remove(this.pickUpButton);
+
+            }, {game: game, player: player, inventory: inventory, items: this.items, item:pointer, interactItemMenu:this.interactItemMenu, menu:menuDoLookPick, lookAtButton:this.lookAtButton, pickUpButton:this.pickUpButton});
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }
