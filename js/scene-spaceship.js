@@ -26,13 +26,15 @@ SceneSpaceship.prototype = {
         this.interactItemMenu = game.add.group();
 
         // socks
-        if (inventory.socks.count === 0 && (cauldronList[0] !== 'socks')) {  // TODO: not always at pos 0
-            socks = this.items.create(580, 400, 'socks');
-            socks.width = 40;
-            socks.height = 40;
-            socks.anchor.setTo(0,0);
-            socks.inputEnabled = true;
-            socks.events.onInputDown.add(this.interactItem, this);
+        if (inventory.socks.count === 0) {
+            if ((cauldronList[0] !== 'socks') || (cauldronList[1] !== 'socks')) {
+                socks = this.items.create(580, 400, 'socks');
+                socks.width = 40;
+                socks.height = 40;
+                socks.anchor.setTo(0,0);
+                socks.inputEnabled = true;
+                socks.events.onInputDown.add(this.interactItem, this);
+            }
         }
 
         console.log('player ' , player);
@@ -58,18 +60,18 @@ SceneSpaceship.prototype = {
         if (pointer.key === 'socks') {
             menuOpened = true;
             // open menu-do-look-pick
-            menuDoLookPick = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
-            this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
+            menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 this.showTopText(this.topText, inventory.socks.description);
             }, {topText:this.topText, showTopText:this.showTopText});
-            this.pickUpButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 44, 'menu-item-btn');
+            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
                 console.log('item = ' , this.item);
-                
+
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
                 console.log('inventory = ' , this.inventory);
@@ -83,7 +85,7 @@ SceneSpaceship.prototype = {
 
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
-            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
@@ -92,7 +94,7 @@ SceneSpaceship.prototype = {
                 this.interactItemMenu.remove(closePointer);
 
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }

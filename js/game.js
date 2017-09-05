@@ -195,11 +195,9 @@ Game.prototype = {
         game.load.image('lake', 'img/items/lake.png', 400, 150);
 
         // item menu assets
-        game.load.image('menu-do-look-chop', 'img/menus/menuDoLookChop.png', 100, 100);
-        game.load.image('menu-do-look-pick', 'img/menus/menuDoLookPick.png', 100, 100);
-        game.load.image('menu-do-look-use', 'img/menus/menuDoLookUse.png', 100, 100);
-        game.load.image('menu-do-look-use-stir', 'img/menus/menuDoLookUseStir.png', 100, 140);
-        game.load.image('menu-do-read', 'img/menus/menuDoRead.png', 100, 60);
+        game.load.image('menu-do-1', 'img/menus/menuDo1.png', 100, 60);
+        game.load.image('menu-do-2', 'img/menus/menuDo2.png', 100, 100);
+        game.load.image('menu-do-3', 'img/menus/menuDo3.png', 100, 140);
 
         game.load.image('menu-items-1', 'img/menus/menuItems1.png', 120, 40);
         game.load.image('menu-items-2', 'img/menus/menuItems2.png', 120, 80);

@@ -66,18 +66,18 @@ SceneTent.prototype = {
             }
             menuOpened = true;
             // open menu-do-look-pick
-            menuDoLookPick = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-look-pick');
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
-            this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
+            menuDo2 = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 this.showTopText(this.topText, inventory.jar.description);
             }, {topText:this.topText, showTopText:this.showTopText});
-            this.pickUpButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 44, 'menu-item-btn');
+            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
                 console.log('item = ' , this.item);
-                
+
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
                 console.log('inventory = ' , this.inventory);
@@ -91,7 +91,7 @@ SceneTent.prototype = {
 
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
-            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
@@ -100,16 +100,16 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(closePointer);
 
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
         } else if (pointer.key === 'cauldron') {
             if (menuOpened) {
                 return;
             }
             menuOpened = true;
             // open menu-do-look-pick
-            menuDoLookPick = this.interactItemMenu.create(cauldron.x, cauldron.y - 100, 'menu-do-look-pick');
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
-            this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
+            menuDo2 = this.interactItemMenu.create(cauldron.x, cauldron.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.cauldron[0];
@@ -118,15 +118,15 @@ SceneTent.prototype = {
                 }
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
-            this.useWithButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 44, 'menu-item-btn');
+            this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
                 console.log('item = ' , this.item);
 
                 // item 1
                 if (this.inventory.socks.count === 1) {
-                    this.interactInnerMenu = this.interactItemMenu.create(menuDoLookPick.x + 100, menuDoLookPick.y, 'menu-items-2');
-                    this.item1Button = this.interactItemMenu.create(menuDoLookPick.x + 122, menuDoLookPick.y + 2, 'menu-item-btn');
+                    this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-2');
+                    this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
                         console.log('item 1 ');
@@ -149,7 +149,7 @@ SceneTent.prototype = {
 
                     if (this.inventory.jar.count === 1 && this.jarState === 'WATER') {
                         // item 2
-                        this.item2Button = this.interactItemMenu.create(menuDoLookPick.x + 122, menuDoLookPick.y + 44, 'menu-item-btn');
+                        this.item2Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 44, 'menu-item-btn');
                         this.item2Button.inputEnabled = true;
                         this.item2Button.events.onInputDown.add(function(item2Pointer) {
                             console.log('item 2');
@@ -171,8 +171,8 @@ SceneTent.prototype = {
                         }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button});
                     }
                 } else if (this.inventory.jar.count === 1 && this.jarState === 'WATER') {
-                    this.interactInnerMenu = this.interactItemMenu.create(menuDoLookPick.x + 100, menuDoLookPick.y, 'menu-items-2');
-                    this.item1Button = this.interactItemMenu.create(menuDoLookPick.x + 122, menuDoLookPick.y + 2, 'menu-item-btn');
+                    this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-2');
+                    this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
                         console.log('item 1 ');
@@ -195,7 +195,7 @@ SceneTent.prototype = {
 
                     if (this.inventory.socks.count === 1) {
                         // item 2
-                        this.item2Button = this.interactItemMenu.create(menuDoLookPick.x + 122, menuDoLookPick.y + 44, 'menu-item-btn');
+                        this.item2Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 44, 'menu-item-btn');
                         this.item2Button.inputEnabled = true;
                         this.item2Button.events.onInputDown.add(function(item2Pointer) {
                             console.log('item 2');
@@ -219,7 +219,7 @@ SceneTent.prototype = {
                 } else {
                     this.showTopText(this.topText, 'You have no items in your inventory to add into the cauldron.');
                 }
-            }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
@@ -228,7 +228,7 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(closePointer);
 
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
         } // end if cauldron
     },
     showTopText: function(topText, str) {
