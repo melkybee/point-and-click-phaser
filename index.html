@@ -35,6 +35,7 @@
 
     <script type="text/javascript" src="js/lib/phaser-no-physics.min.js"></script>
     <script type="text/javascript" src="js/boot.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/scene-spaceship.js"></script>
     <script type="text/javascript" src="js/scene-lake.js"></script>
@@ -59,6 +60,7 @@
 
           // Init game
           game.state.add('boot', Boot);
+          game.state.add('game', Game);
           game.state.add('player', Player);
           game.state.add('scene-spaceship', SceneSpaceship);
           game.state.add('scene-lake', SceneLake);

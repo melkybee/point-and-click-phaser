@@ -8,7 +8,7 @@ Player.prototype = {
     preload: function() {
     },
     create: function() {
-        this.sprite = game.add.sprite(GAME_WIDTH/2, GAME_WIDTH/2, 'chibi-walk');
+        this.sprite = game.add.sprite(playerX, playerY, 'chibi-walk');
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         this.sprite.body.setSize(100, 150);
         this.sprite.anchor.setTo(0.5,1);
@@ -18,7 +18,8 @@ Player.prototype = {
     },
     moveCharacter: function(pointer) {
         var pointerX = pointer.x,
-            pointerY = pointer.y;
+            pointerY = pointer.y,
+            duration;
 
         // player facing left/right
         if (pointer.x > this.sprite.x) {
@@ -31,7 +32,7 @@ Player.prototype = {
         this.isMoving = true;
 
         //  300 = 300 pixels per second = the speed the sprite will move at, regardless of the distance it has to travel
-        var duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 300) * 1000;
+        duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 300) * 1000;
 
         // limits
         if (pointerX < 70) {
@@ -87,34 +88,44 @@ Player.prototype = {
     changeScene: function(currentScene, direction) {
         if (currentScene === 'scene-spaceship') {
             if (direction === 'left') {
+                playerX = playerRightX;
                 game.state.start('scene-lake');
             } else if (direction === 'right') {
+                playerX = playerLeftX;
                 game.state.start('scene-outer-house');
             }
         } else if (currentScene === 'scene-lake') {
             if (direction === 'left') {
+                playerX = playerRightX;
                 game.state.start('scene-forest');
             } else if (direction === 'right') {
+                playerX = playerLeftX;
                 game.state.start('scene-spaceship');
             }
         } else if (currentScene === 'scene-forest') {
             if (direction === 'right') {
+                playerX = playerLeftX;
                 game.state.start('scene-lake');
             }
         } else if (currentScene === 'scene-outer-house') {
             if (direction === 'left') {
+                playerX = playerRightX;
                 game.state.start('scene-spaceship');
             } else if (direction === 'right') {
+                playerX = playerLeftX;
                 game.state.start('scene-inner-house');
             }
         } else if (currentScene === 'scene-inner-house') {
             if (direction === 'left') {
+                playerX = playerRightX;
                 game.state.start('scene-outer-house');
             } else if (direction === 'down') {
+                playerX = playerRightX;
                 game.state.start('scene-basement');
             }
         } else if (currentScene === 'scene-basement') {
             if (direction === 'up') {
+                playerX = playerLeftX;
                 game.state.start('scene-inner-house');
             }
         }

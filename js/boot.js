@@ -19,9 +19,6 @@ var GAME_WIDTH = 720,
     mainMenuButton,
     gameTitle,
 
-    // tap
-    tap,
-
     // header text style
     STYLE_HEADER = {
         font: "24px dimbo",
@@ -50,6 +47,22 @@ var GAME_WIDTH = 720,
     dialogMenu,
 
     bookMenu,
+
+    // player
+    player,
+
+    // player position
+    playerLeftX = 72,
+    playerRightX = 648,
+    playerX = GAME_WIDTH/2,
+    playerY = 400,
+
+    // items
+    items = null,
+
+    // scene - spaceship
+    crackers = null,
+    socks = null,
 
     // inventory for items that can be picked up
     inventory = {
@@ -237,11 +250,8 @@ var GAME_WIDTH = 720,
 
     isGameOver;
 
-
-
 // booting / preloading assets
 Boot = function () {
-    this.player = null;
     this.loadText = null;
 };
 Boot.prototype = {
@@ -279,9 +289,12 @@ Boot.prototype = {
         game.load.image('bg-inner-house', 'img/bg-inner-house.png', 720, 480);
         game.load.image('bg-basement', 'img/bg-basement.png', 720, 480);
 
+        // items
+        game.load.image('crackers', 'img/items/crackers.png', 40, 40);
+        game.load.image('socks', 'img/items/socks.png', 40, 40);
+
     },
     create: function() {
-        // transition to title screen when loaded
         game.state.start('scene-spaceship');
     }
 };
