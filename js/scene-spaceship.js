@@ -85,10 +85,10 @@ SceneSpaceship.prototype = {
             menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-2');
 
             // close
-            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 this.showTopText(this.topText, inventory.socks.description);
@@ -106,7 +106,7 @@ SceneSpaceship.prototype = {
             );
 
             // pick up
-            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 48, 'menu-item-btn');
 
             // pick up text
             this.pickUpText = game.add.text(
@@ -162,10 +162,10 @@ SceneSpaceship.prototype = {
             menuDo2 = this.interactItemMenu.create(spaceship.x + 100, spaceship.y + 40, 'menu-do-2');
 
             // close
-            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.spaceship[0];
@@ -184,7 +184,7 @@ SceneSpaceship.prototype = {
             );
 
             // use with
-            this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            this.useWithButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 48, 'menu-item-btn');
 
             // use with text
             this.useWithText = game.add.text(
@@ -210,7 +210,7 @@ SceneSpaceship.prototype = {
                 // item inner menu
                 this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-1');
                 // item 1
-                this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
+                this.item1Button = this.interactItemMenu.create(menuDo2.x + 130, menuDo2.y + 10, 'menu-item-btn');
                 // item 1 text
                 if (this.inventory.jar_fuel.count === 1) {
                     item1Txt = 'JAR OF FUEL';
@@ -227,7 +227,7 @@ SceneSpaceship.prototype = {
                 );
 
                 // re-add close button
-                this.closeButton = this.interactItemMenu.create(menuDo2.x + 202, menuDo2.y - 42, 'menu-close-btn');
+                this.closeButton = this.interactItemMenu.create(menuDo2.x + 202, menuDo2.y - 32, 'menu-close-btn');
 
                 // item 1
                 if (this.inventory.jar_fuel.count === 1) {
@@ -267,7 +267,7 @@ SceneSpaceship.prototype = {
                     }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, lookAtText: this.lookAtText, useWithText: this.useWithText, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, closeButton:this.closeButton});
 
                 } else {
-                    this.showTopText(this.topText, 'You have no items in your inventory that can be used with the spaceship.');
+                    this.showTopText(this.topText, 'I have no items in my inventory that can be used with the spaceship.');
                 }
 
                 // re-add closeButton actions

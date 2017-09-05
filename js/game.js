@@ -206,9 +206,9 @@ Game.prototype = {
         game.load.image('menu-items-2', 'img/menus/menuItems2.png', 120, 80);
         game.load.image('menu-items-3', 'img/menus/menuItems3.png', 120, 120);
 
-        game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 96, 36);
+        game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 80, 24);
 
-        game.load.image('menu-close-btn', 'img/menus/closeButton.png', 40, 40);
+        game.load.image('menu-close-btn', 'img/menus/closeButton.png', 30, 30);
 
     },
     create: function() {

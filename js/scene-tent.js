@@ -81,10 +81,10 @@ SceneTent.prototype = {
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-2');
 
-            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 this.showTopText(this.topText, inventory.jar.description);
@@ -102,7 +102,7 @@ SceneTent.prototype = {
             );
 
             // pick up button
-            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 48, 'menu-item-btn');
             // pick up text
             this.pickUpText = game.add.text(
                 this.pickUpButton.x + 2,
@@ -158,10 +158,10 @@ SceneTent.prototype = {
             menuDo3 = this.interactItemMenu.create(cauldron.x, cauldron.y - 140, 'menu-do-3');
 
             // close
-            this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 10, 'menu-item-btn');
             // look at text
             this.lookAtText = game.add.text(
                 this.lookAtButton.x + 2,
@@ -196,7 +196,7 @@ SceneTent.prototype = {
             }, {topText:this.topText, showTopText:this.showTopText, inventory: inventory});
 
             // use with
-            this.useWithButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 44, 'menu-item-btn');
+            this.useWithButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 48, 'menu-item-btn');
             // use with text
             this.useWithText = game.add.text(
                 this.useWithButton.x + 2,
@@ -210,7 +210,7 @@ SceneTent.prototype = {
             );
 
             // stir
-            this.stirButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 84, 'menu-item-btn');
+            this.stirButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 84, 'menu-item-btn');
             // stir text
             this.stirText = game.add.text(
                 this.stirButton.x + 2,
@@ -235,7 +235,7 @@ SceneTent.prototype = {
 
                 // item inner menu
                 this.interactInnerMenu = this.interactItemMenu.create(menuDo3.x + 100, menuDo3.y, 'menu-items-2');
-                this.item1Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 2, 'menu-item-btn');
+                this.item1Button = this.interactItemMenu.create(menuDo3.x + 130, menuDo3.y + 10, 'menu-item-btn');
                 // item 1 text
                 if (this.inventory.socks.count === 1) {
                     item1Txt = 'SWEATY SOCKS';
@@ -250,7 +250,7 @@ SceneTent.prototype = {
                         align: 'left'
                     }
                 );
-                this.item2Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 44, 'menu-item-btn');
+                this.item2Button = this.interactItemMenu.create(menuDo3.x + 130, menuDo3.y + 44, 'menu-item-btn');
                 // item 2 text
                 if (this.inventory.jar_water.count === 1) {
                     item2Txt = 'LAKE WATER';
@@ -267,7 +267,7 @@ SceneTent.prototype = {
                 );
 
                 // re-add close button
-                this.closeButton = this.interactItemMenu.create(menuDo3.x + 202, menuDo3.y - 42, 'menu-close-btn');
+                this.closeButton = this.interactItemMenu.create(menuDo3.x + 202, menuDo3.y - 32, 'menu-close-btn');
 
                 // item 1
                 if (this.inventory.socks.count === 1) {

@@ -83,10 +83,10 @@ SceneLake.prototype = {
             menuDo3 = this.interactItemMenu.create(lake.x + 300, lake.y - 140, 'menu-do-3');
 
             // close
-            this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.lake[0];
@@ -105,10 +105,10 @@ SceneLake.prototype = {
             );
 
             // use with
-            this.useWithButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 44, 'menu-item-btn');
+            this.useWithButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 48, 'menu-item-btn');
 
             // drink
-            this.drinkButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 84, 'menu-item-btn');
+            this.drinkButton = this.interactItemMenu.create(menuDo3.x + 10, menuDo3.y + 84, 'menu-item-btn');
 
             // use with text
             this.useWithText = game.add.text(
@@ -145,10 +145,10 @@ SceneLake.prototype = {
 
                 // item inner menu
                 this.interactInnerMenu = this.interactItemMenu.create(menuDo3.x + 100, menuDo3.y, 'menu-items-1');
-                this.item1Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 2, 'menu-item-btn');
+                this.item1Button = this.interactItemMenu.create(menuDo3.x + 130, menuDo3.y + 10, 'menu-item-btn');
 
                 // re-add close button
-                this.closeButton = this.interactItemMenu.create(menuDo3.x + 202, menuDo3.y - 42, 'menu-close-btn');
+                this.closeButton = this.interactItemMenu.create(menuDo3.x + 202, menuDo3.y - 32, 'menu-close-btn');
 
                 // item 1 text
                 if (this.inventory.jar.count === 1) {
@@ -193,7 +193,7 @@ SceneLake.prototype = {
                     }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, drinkButton: this.drinkButton, lookAtText: this.lookAtText, useWithText: this.useWithText, drinkText: this.drinkText, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, closeButton:this.closeButton});
 
                 } else {
-                    this.showTopText(this.topText, 'You have no items in your inventory that can be used with the lake.');
+                    this.showTopText(this.topText, 'I have no items in my inventory that can be used with the lake.');
                 }
 
                 // re-add closeButton actions
@@ -256,10 +256,10 @@ SceneLake.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo1 = this.interactItemMenu.create(sign.x + 0, sign.y - 60, 'menu-do-1');
-            this.closeButton = this.interactItemMenu.create(menuDo1.x + 102, menuDo1.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo1.x + 102, menuDo1.y - 32, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 2, menuDo1.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 10, menuDo1.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.sign[0];
@@ -297,10 +297,10 @@ SceneLake.prototype = {
             menuDo2 = this.interactItemMenu.create(tree.x + 0, tree.y - 60, 'menu-do-2');
 
             // close button
-            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 32, 'menu-close-btn');
 
             // look at button
-            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.tree[0];
@@ -319,7 +319,7 @@ SceneLake.prototype = {
             );
 
             // chop button
-            this.chopButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            this.chopButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 48, 'menu-item-btn');
             this.chopButton.inputEnabled = true;
             this.chopButton.events.onInputDown.add(function(chopPointer) {
                 var txt = '';
