@@ -13,10 +13,6 @@ var GAME_WIDTH = 720,
     // game title
     gameTitle,
 
-    // tap
-    tap,
-    music,
-
     // current scene
     currentScene = 'scene-spaceship',
 
@@ -172,10 +168,6 @@ Game.prototype = {
         this.loadText.anchor.setTo(0.5,0.5);
 
         // preload all of the game assets
-
-        // audio
-        game.load.audio('maintheme', ['sound/maintheme.wav']);
-        game.load.audio('tap', ['sound/tap.wav']);
 
         // menu assets
         game.load.image('title', 'img/title.png');

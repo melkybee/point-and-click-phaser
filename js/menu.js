@@ -10,9 +10,6 @@ Title.prototype = {
         // add title to screen
         gameTitle = game.add.sprite(36, 18, 'title');
 
-        tap = game.add.audio('tap',0.5,false);
-        music = game.add.audio('maintheme',0.5,false);
-
         // button
         playButton = game.add.button(94, GAME_HEIGHT - 94, 'playButton', this.transitionGame, this, 0, 0, 0);
 
@@ -20,11 +17,6 @@ Title.prototype = {
     transitionGame : function() {
         // google analytics
 //        gaPlugin.trackEvent(gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Main Menu - Play Game", new Date().getMilliseconds());
-
-        // play tap sound
-        tap.play('tap',0,0.5,false);
-
-        music.play('music',0,1,true);
 
         // start game
         game.state.start('scene-spaceship');
@@ -120,8 +112,6 @@ GameOver.prototype = {
  //       shareTwitterButton = game.add.button(GAME_WIDTH/2-100, gameTitle.y + gameTitle.height + 80, 'shareTwitterButton', this.shareTwitter, this, 0, 0, 0);
  //       shareFacebookButton = game.add.button(GAME_WIDTH/2+10, gameTitle.y + gameTitle.height + 80, 'shareFacebookButton', this.shareFacebook, this, 0, 0, 0);
 
-        tap = game.add.audio('tap',0.5,false);
-
         // button
         mainMenuButton = game.add.button(GAME_WIDTH/2 - 100, GAME_HEIGHT - 140, 'mainMenuButton', this.transition, this, 0, 0, 0);
 
@@ -141,9 +131,6 @@ GameOver.prototype = {
     transition : function() {
         // google analytics
 //        gaPlugin.trackEvent( gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Game Over Menu - Back to Main Menu", new Date().getMilliseconds());
-
-        // play tap sound
-        tap.play('tap',0,0.5,false);
 
         // show menu screen
         game.state.start('title');
