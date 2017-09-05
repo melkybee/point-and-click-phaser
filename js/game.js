@@ -4,49 +4,26 @@ var GAME_WIDTH = 720,
     // Phaser game object
     game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'game_div', { preload: this.preload, create: this.create, update: this.update, render: this.render }),
 
-    // background
-    bg,
-
-    // world
-    world,
-
-    // title
-    title,
-
     // buttons
     playButton,
     playAgainButton,
     mainMenuButton,
+    closeButton,
+
+    // game title
     gameTitle,
 
-    // header text style
-    STYLE_HEADER = {
-        font: "24px dimbo",
-        fill: '#fff',
-        stroke: '#333',
-        strokeThickness: 4,
-        align: 'center'
-    },
-
-    // body text style
-    STYLE_BODY = {
-        font: "18px dimbo",
-        fill: '#fff',
-        stroke: '#333',
-        strokeThickness: 4,
-        align: 'center'
-    },
-
+    // current scene
     currentScene = 'scene-spaceship',
 
     // backpack on screen opens inventory menu
     backpack,
 
+    // inventory menu
     inventoryMenu,
 
-    dialogMenu,
-
-    bookMenu,
+    // interact item menu
+    interactItemMenu,
 
     // player
     player,
@@ -153,9 +130,9 @@ var GAME_WIDTH = 720,
 
     menuOptions = {
         'LOOK_AT': 'LOOK AT',
-        'MIX': 'MIX',
         'PICK_UP': 'PICK UP',
         'READ': 'READ',
+        'STIR': 'STIR',
         'USE_WITH': 'USE WITH'
     },
 
@@ -204,7 +181,7 @@ Game.prototype = {
         game.load.image('menu-do-look-chop', 'img/menus/menuDoLookChop.png', 100, 100);
         game.load.image('menu-do-look-pick', 'img/menus/menuDoLookPick.png', 100, 100);
         game.load.image('menu-do-look-use', 'img/menus/menuDoLookUse.png', 100, 100);
-        game.load.image('menu-do-look-use-mix', 'img/menus/menuDoLookUseMix.png', 100, 140);
+        game.load.image('menu-do-look-use-stir', 'img/menus/menuDoLookUseStir.png', 100, 140);
         game.load.image('menu-do-read', 'img/menus/menuDoRead.png', 100, 60);
 
         game.load.image('menu-items-1', 'img/menus/menuItems1.png', 120, 40);
@@ -218,10 +195,7 @@ Game.prototype = {
     collectItem: function(player, item) {
         console.log('collect: ' + item.key);
         inventory[item.key].count = 1;
-        this.removeItem(item);
+        this.items.remove(item);
         console.log('inventory = ' , inventory);
-    },
-    removeItem: function(itemSprite) {
-        items.remove(itemSprite);
     }
 };

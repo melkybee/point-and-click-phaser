@@ -34,15 +34,6 @@ SceneSpaceship.prototype = {
 
     },
     update: function() {
-        /*
-        // collect item
-        game.physics.arcade.overlap(
-            player.sprite,
-            this.items,
-            this.collectItem,
-            null, this
-        );
-        */
     },
     interactItem: function(pointer) {
         console.log('clicked on = ' + pointer.key);
@@ -51,12 +42,5 @@ SceneSpaceship.prototype = {
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }
-    },
-    collectItem: function(player, item) {
-        console.log('collect: ' + item.key);
-        inventory[item.key].count = 1;
-        //game.removeItem(item);
-        this.items.remove(item);
-        console.log('inventory = ' , inventory);
     }
 };
