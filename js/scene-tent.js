@@ -31,9 +31,11 @@ SceneTent.prototype = {
 
         // jar
         if (inventory.jar.count === 0) {
-            jar = this.items.create(580, 400, 'jar');
-            jar.inputEnabled = true;
-            jar.events.onInputDown.add(this.interactItem, this);
+            if ((inventory.jar_water.count === 1) || (inventory.jar_fuel.count === 1)) {
+                jar = this.items.create(580, 400, 'jar');
+                jar.inputEnabled = true;
+                jar.events.onInputDown.add(this.interactItem, this);
+            }
         }
 
         // cauldron
@@ -168,7 +170,7 @@ SceneTent.prototype = {
                             menuOpened = false;
                         }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button});
                     }
-                } else if (this.inventory.jar.count === 1) {
+                } else if (this.inventory.jar_water.count === 1) {
                     this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-2');
                     this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
