@@ -1,5 +1,6 @@
 SceneSpaceship = function() {
     this.items = null;
+    this.inputHandler = null;
 };
 
 SceneSpaceship.prototype = {
@@ -25,6 +26,8 @@ SceneSpaceship.prototype = {
             crackers = this.items.create(540, 300, 'crackers');
             crackers.body.setSize(40, 40, 0, 0);
             crackers.anchor.setTo(0.5,0.5);
+            crackers.inputEnabled = true;
+            crackers.events.onInputDown.add(this.interactItem, this);
         }
 
         // socks
@@ -32,12 +35,15 @@ SceneSpaceship.prototype = {
             socks = this.items.create(580, 400, 'socks');
             socks.body.setSize(40, 40, 0, 0);
             socks.anchor.setTo(0.5,0.5);
+            socks.inputEnabled = true;
+            socks.events.onInputDown.add(this.interactItem, this);
         }
 
         console.log('player ' , player);
 
     },
     update: function() {
+        /*
         // collect item
         game.physics.arcade.overlap(
             player.sprite,
@@ -45,6 +51,10 @@ SceneSpaceship.prototype = {
             this.collectItem,
             null, this
         );
+        */
+    },
+    interactItem: function(pointer) {
+        console.log('clicked on = ' + pointer.key);
     },
     collectItem: function(player, item) {
         console.log('collect: ' + item.key);
