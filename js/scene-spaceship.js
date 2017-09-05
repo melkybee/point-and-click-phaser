@@ -55,9 +55,9 @@ SceneSpaceship.prototype = {
         );
 
         // backpack
-        backpack = game.add.sprite(660, 10, 'backpack');
-        backpack.inputEnabled = true;
-        backpack.events.onInputDown.add(this.openInventory, this);
+        // backpack = game.add.sprite(660, 10, 'backpack');
+        // backpack.inputEnabled = true;
+        // backpack.events.onInputDown.add(this.openInventory, this);
 
     },
     update: function() {

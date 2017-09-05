@@ -31,7 +31,7 @@ SceneTent.prototype = {
 
         // jar
         if (inventory.jar.count === 0) {
-            if ((inventory.jar_water.count === 1) || (inventory.jar_fuel.count === 1)) {
+            if ((inventory.jar_water.count !== 1) || (inventory.jar_fuel.count !== 1)) {
                 jar = this.items.create(580, 400, 'jar');
                 jar.inputEnabled = true;
                 jar.events.onInputDown.add(this.interactItem, this);
@@ -56,9 +56,9 @@ SceneTent.prototype = {
         );
 
         // backpack
-        backpack = game.add.sprite(660, 10, 'backpack');
-        backpack.inputEnabled = true;
-        backpack.events.onInputDown.add(this.openInventory, this);
+        // backpack = game.add.sprite(660, 10, 'backpack');
+        // backpack.inputEnabled = true;
+        // backpack.events.onInputDown.add(this.openInventory, this);
 
     },
     update: function() {
@@ -151,9 +151,7 @@ SceneTent.prototype = {
                         this.interactItemMenu.remove(this.useWithButton);
 
                         this.interactItemMenu.remove(this.item1Button);
-                        if (this.item2Button) {
-                            this.interactItemMenu.remove(this.item2Button);
-                        }
+                        this.interactItemMenu.remove(this.item2Button);
                         this.interactItemMenu.remove(this.interactInnerMenu);
 
                         menuOpened = false;
@@ -178,9 +176,7 @@ SceneTent.prototype = {
                         this.interactItemMenu.remove(this.useWithButton);
 
                         this.interactItemMenu.remove(this.item1Button);
-                        if (this.item2Button) {
-                            this.interactItemMenu.remove(this.item2Button);
-                        }
+                        this.interactItemMenu.remove(this.item2Button);
                         this.interactItemMenu.remove(this.interactInnerMenu);
 
                         menuOpened = false;
@@ -202,10 +198,13 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.useWithButton);
+                this.interactItemMenu.remove(this.item1Button);
+                this.interactItemMenu.remove(this.item2Button);
+                this.interactItemMenu.remove(this.interactInnerMenu);
                 this.interactItemMenu.remove(closePointer);
 
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
         } // end if cauldron
     },
     showTopText: function(topText, str) {
