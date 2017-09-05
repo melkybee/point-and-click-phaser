@@ -111,7 +111,7 @@ SceneLake.prototype = {
                     }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button});
 
                 } else {
-                    this.showTopText(this.topText, 'You have no items in your inventory use with the lake.');
+                    this.showTopText(this.topText, 'You have no items in your inventory that can be used with the lake.');
                 }
             }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
@@ -151,12 +151,12 @@ SceneLake.prototype = {
             }
             menuOpened = true;
             // open menu-do-2
-            menuDo1 = this.interactItemMenu.create(sign.x + 0, sign.y - 60, 'menu-do-1');
+            menuDo1 = this.interactItemMenu.create(tree.x + 0, tree.y - 60, 'menu-do-1');
             this.closeButton = this.interactItemMenu.create(menuDo1.x + 102, menuDo1.y - 42, 'menu-close-btn');
             this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 2, menuDo1.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
-                var txt = dialog.sign[0];
+                var txt = dialog.tree[0];
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
             this.closeButton.inputEnabled = true;
