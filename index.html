@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Astro Chibi</title>
+
+    <style>
+      @font-face {
+        font-family: 'dimbo'; src: url('fonts/dimbo-regular.ttf');
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: 'dimbo', sans-serif;
+      }
+
+      #game_div {
+        margin: auto;
+        background: #fff;
+      }
+
+      #preload-font {
+        font-family: 'dimbo', sans-serif;
+        text-indent: -9999px;
+        font-size: 0;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <span id="preload-font"></span>
+    <div id="game_div"></div>
+
+    <script type="text/javascript" src="js/lib/phaser-no-physics.min.js"></script>
+    <script type="text/javascript" src="js/boot.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/scene-spaceship.js"></script>
+    <script type="text/javascript" src="js/scene-lake.js"></script>
+    <script type="text/javascript" src="js/scene-forest.js"></script>
+    <script type="text/javascript" src="js/scene-outer-house.js"></script>
+    <script type="text/javascript" src="js/scene-inner-house.js"></script>
+    <script type="text/javascript" src="js/scene-basement.js"></script>
+
+    <script>
+      if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
+          // alert('hello world! this is a device');
+          document.addEventListener('deviceready', initApp, false);
+      } else {
+          // alert('hello world! this is NOT a device');
+          initApp();
+      }
+
+      function initApp() {
+          // screen dimensions
+          document.getElementById('game_div').style.height = 720; //(screen.height > screen.width) ? screen.width : screen.height;
+          document.getElementById('game_div').style.width = 480; //(screen.width > screen.height) ? screen.height : screen.width;
+
+          // Init game
+          game.state.add('boot', Boot);
+          game.state.add('player', Player);
+          game.state.add('scene-spaceship', SceneSpaceship);
+          game.state.add('scene-lake', SceneLake);
+          game.state.add('scene-forest', SceneForest);
+          game.state.add('scene-outer-house', SceneOuterHouse);
+          game.state.add('scene-inner-house', SceneInnerHouse);
+          game.state.add('scene-basement', SceneBasement);
+
+          // start game
+          game.state.start('boot');
+      }
+
+    </script>
+
+  </body>
+
+</html>
