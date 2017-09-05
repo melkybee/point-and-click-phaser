@@ -34,6 +34,7 @@
     <div id="game_div"></div>
 
     <script type="text/javascript" src="js/lib/phaser.min.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/scene-spaceship.js"></script>
@@ -42,13 +43,14 @@
 
     <script>
       if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
-          // alert('hello world! this is a device');
           document.addEventListener('deviceready', initApp, false);
       } else {
-          // alert('hello world! this is NOT a device');
           initApp();
       }
 
+      /**
+       * Init
+       */
       function initApp() {
           // screen dimensions
           document.getElementById('game_div').style.height = 720; //(screen.height > screen.width) ? screen.width : screen.height;
@@ -56,13 +58,24 @@
 
           // Init game
           game.state.add('game', Game);
+          game.state.add('title', Title);
           game.state.add('player', Player);
           game.state.add('scene-spaceship', SceneSpaceship);
           game.state.add('scene-lake', SceneLake);
           game.state.add('scene-tent', SceneTent);
+          // game.state.add('ending-1', EndingOne);
+          // game.state.add('ending-2', EndingTwo);
+          game.state.add('gameover', GameOver);
 
-          // start game
-          game.state.start('game');
+          // go to menu
+          game.state.start('menu');
+      }
+
+      /**
+       * Open browser in device
+       */
+      function openDeviceBrowser(externalLinkToOpen) {
+        window.open(externalLinkToOpen, '_system', 'location=no');
       }
 
     </script>

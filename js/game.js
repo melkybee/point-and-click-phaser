@@ -13,6 +13,9 @@ var GAME_WIDTH = 720,
     // game title
     gameTitle,
 
+    // tap
+    tap,
+
     // current scene
     currentScene = 'scene-spaceship',
 

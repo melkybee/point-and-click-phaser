@@ -60,7 +60,7 @@ SceneSpaceship.prototype = {
             20,
             '',
             {
-                font: "18px dimbo",
+                font: "18px naz",
                 fill: '#fff',
                 align: 'left'
             }
@@ -85,10 +85,10 @@ SceneSpaceship.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-2');
-            
+
             // close
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
-            
+
             // look at
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
@@ -101,12 +101,12 @@ SceneSpaceship.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
             );
-            
+
             // pick up
             this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
 
@@ -116,7 +116,7 @@ SceneSpaceship.prototype = {
                 this.pickUpButton.y + 2,
                 'PICK UP',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -162,10 +162,10 @@ SceneSpaceship.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(spaceship.x, spaceship.y - 100, 'menu-do-2');
-            
+
             // close
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
-            
+
             // look at
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
@@ -179,12 +179,12 @@ SceneSpaceship.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
             );
-            
+
             // use with
             this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
 
@@ -194,7 +194,7 @@ SceneSpaceship.prototype = {
                 this.useWithButton.y + 2,
                 'USE WITH',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -222,7 +222,7 @@ SceneSpaceship.prototype = {
                     this.item1Button.y + 2,
                     item1Txt,
                     {
-                        font: "14px dimbo",
+                        font: "14px naz",
                         fill: '#000',
                         align: 'left'
                     }
@@ -289,7 +289,7 @@ SceneSpaceship.prototype = {
                     menuOpened = false;
                 }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, lookAtText: this.lookAtText, useWithText: this.useWithText});
             }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, lookAtText: this.lookAtText, pickUpText: this.pickUpText, useWithText: this.useWithText, closeButton:this.closeButton, showTopText: this.showTopText, topText: this.topText });
-            
+
             // close button
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {

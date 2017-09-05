@@ -53,7 +53,7 @@ SceneTent.prototype = {
             20,
             '',
             {
-                font: "18px dimbo",
+                font: "18px naz",
                 fill: '#fff',
                 align: 'left'
             }
@@ -77,7 +77,7 @@ SceneTent.prototype = {
             menuDo2 = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-2');
 
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
-            
+
             // look at
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
@@ -90,7 +90,7 @@ SceneTent.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -104,7 +104,7 @@ SceneTent.prototype = {
                 this.pickUpButton.y + 2,
                 'PICK UP',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -163,7 +163,7 @@ SceneTent.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -198,12 +198,12 @@ SceneTent.prototype = {
                 this.useWithButton.y + 2,
                 'USE WITH',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
             );
-            
+
             // stir
             this.stirButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 84, 'menu-item-btn');
             // stir text
@@ -212,7 +212,7 @@ SceneTent.prototype = {
                 this.stirButton.y + 2,
                 'STIR',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -240,7 +240,7 @@ SceneTent.prototype = {
                     this.item1Button.y + 2,
                     item1Txt,
                     {
-                        font: "14px dimbo",
+                        font: "14px naz",
                         fill: '#000',
                         align: 'left'
                     }
@@ -255,7 +255,7 @@ SceneTent.prototype = {
                     this.item2Button.y + 2,
                     item2Txt,
                     {
-                        font: "14px dimbo",
+                        font: "14px naz",
                         fill: '#000',
                         align: 'left'
                     }

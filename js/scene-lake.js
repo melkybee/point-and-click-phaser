@@ -58,7 +58,7 @@ SceneLake.prototype = {
             20,
             '',
             {
-                font: "18px dimbo",
+                font: "18px naz",
                 fill: '#fff',
                 align: 'left'
             }
@@ -83,10 +83,10 @@ SceneLake.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo3 = this.interactItemMenu.create(lake.x + 300, lake.y - 140, 'menu-do-3');
-            
+
             // close
             this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 42, 'menu-close-btn');
-            
+
             // look at
             this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
@@ -100,15 +100,15 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
             );
-            
+
             // use with
             this.useWithButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 44, 'menu-item-btn');
-            
+
             // drink
             this.drinkButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 84, 'menu-item-btn');
 
@@ -118,7 +118,7 @@ SceneLake.prototype = {
                 this.useWithButton.y + 2,
                 'USE WITH',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -130,7 +130,7 @@ SceneLake.prototype = {
                 this.drinkButton.y + 2,
                 'DRINK',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -161,7 +161,7 @@ SceneLake.prototype = {
                     this.item1Button.y + 2,
                     item1Txt,
                     {
-                        font: "14px dimbo",
+                        font: "14px naz",
                         fill: '#000',
                         align: 'left'
                     }
@@ -273,7 +273,7 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'READ',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -297,10 +297,10 @@ SceneLake.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(tree.x + 0, tree.y - 60, 'menu-do-2');
-            
+
             // close button
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
-            
+
             // look at button
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
@@ -314,7 +314,7 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
@@ -337,9 +337,9 @@ SceneLake.prototype = {
             this.chopText = game.add.text(
                 this.chopButton.x + 2,
                 this.chopButton.y + 2,
-                'CHOP',
+                'PUNCH',
                 {
-                    font: "14px dimbo",
+                    font: "14px naz",
                     fill: '#000',
                     align: 'left'
                 }
