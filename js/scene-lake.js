@@ -26,43 +26,43 @@ SceneLake.prototype = {
     create: function() {
         this.background = game.add.sprite(0, 0, 'bg-lake');
 
-        // player
-        player.create();
-
         // items
         this.items = game.add.group();
 
         // interactItemMenu
         this.interactItemMenu = game.add.group();
 
-        // lake
-        lake = this.items.create(0, 400, 'lake');
-        lake.anchor.setTo(0,0);
-        lake.inputEnabled = true;
-        lake.events.onInputDown.add(this.interactItem, this);
-
         // sign
-        sign = this.items.create(420, 400, 'sign');
+        sign = this.items.create(386, 380, 'sign');
         sign.anchor.setTo(0,0);
         sign.inputEnabled = true;
         sign.events.onInputDown.add(this.interactItem, this);
 
         // tree
-        tree = this.items.create(550, 220, 'tree');
+        tree = this.items.create(450, 120, 'tree');
         tree.anchor.setTo(0,0);
         tree.inputEnabled = true;
         tree.events.onInputDown.add(this.interactItem, this);
+
+        // player
+        player.create();
+
+        // lake
+        lake = this.items.create(0, 394, 'lake');
+        lake.anchor.setTo(0,0);
+        lake.inputEnabled = true;
+        lake.events.onInputDown.add(this.interactItem, this);
 
         this.topText = game.add.text(
             20,
             20,
             '',
             {
-                font: "18px coolstory",
+                font: "20px coolstory",
                 fill: '#fff',
                 align: 'left',
                 stroke: '#000',
-                strokeThickness: 4
+                strokeThickness: 10
             }
         );
 

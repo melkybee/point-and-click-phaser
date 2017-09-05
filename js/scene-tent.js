@@ -37,13 +37,13 @@ SceneTent.prototype = {
 
         // jar
         if (!pickedUpJar) {
-            jar = this.items.create(580, 400, 'jar');
+            jar = this.items.create(520, 400, 'jar');
             jar.inputEnabled = true;
             jar.events.onInputDown.add(this.interactItem, this);
         }
 
         // cauldron
-        cauldron = this.items.create(380, 300, 'cauldron');
+        cauldron = this.items.create(380, 350, 'cauldron');
         cauldron.inputEnabled = true;
         cauldron.events.onInputDown.add(this.interactItem, this);
 
@@ -53,11 +53,11 @@ SceneTent.prototype = {
             20,
             '',
             {
-                font: "18px coolstory",
+                font: "20px coolstory",
                 fill: '#fff',
                 align: 'left',
                 stroke: '#000',
-                strokeThickness: 4
+                strokeThickness: 10
             }
         );
 
@@ -245,7 +245,7 @@ SceneTent.prototype = {
                 this.item2Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 44, 'menu-item-btn');
                 // item 2 text
                 if (this.inventory.jar_water.count === 1) {
-                    item2Txt = 'MYSTIC WATER';
+                    item2Txt = 'LAKE WATER';
                 }
                 this.item2Text = game.add.text(
                     this.item2Button.x + 2,

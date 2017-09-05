@@ -178,7 +178,7 @@ Game.prototype = {
         game.load.image('mainMenuButton', 'img/main-menu-btn.png', 180, 44);
 
         // player assets
-        game.load.spritesheet('chibi-walk', 'img/chibi-walk.png', 100, 150, 1);
+        game.load.spritesheet('chibi-walk', 'img/chibi-walk.png', 46, 76, 2);
 
         // background assets
         game.load.image('bg-spaceship', 'img/bg-spaceship.png', 720, 480);
@@ -186,15 +186,15 @@ Game.prototype = {
         game.load.image('bg-tent', 'img/bg-tent.png', 720, 480);
 
         // items for inventory
-        game.load.image('socks', 'img/items/socks.png', 40, 40);
-        game.load.image('jar', 'img/items/jar.png', 40, 40);
+        game.load.image('socks', 'img/items/socks.png', 32, 42);
+        game.load.image('jar', 'img/items/jar.png', 25, 40);
 
         // items that can't be picked up but can be interacted with
-        game.load.image('spaceship', 'img/items/spaceship.png', 100, 150);
-        game.load.image('cauldron', 'img/items/cauldron.png', 100, 100);
-        game.load.image('lake', 'img/items/lake.png', 400, 150);
-        game.load.image('sign', 'img/items/sign.png', 40, 40);
-        game.load.image('tree', 'img/items/tree.png', 100, 150);
+        game.load.image('spaceship', 'img/items/spaceship.png', 436, 236);
+        game.load.image('cauldron', 'img/items/cauldron.png', 58, 75);
+        game.load.image('lake', 'img/items/lake.png', 400, 100);
+        game.load.image('sign', 'img/items/sign.png', 42, 52);
+        game.load.image('tree', 'img/items/tree.png', 112, 184);
 
         // item menu assets
         game.load.image('menu-do-1', 'img/menus/menuDo1.png', 100, 60);

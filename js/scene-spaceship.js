@@ -24,9 +24,6 @@ SceneSpaceship.prototype = {
     create: function() {
         this.background = game.add.sprite(0, 0, 'bg-spaceship');
 
-        // player
-        player.create();
-
         // items
         this.items = game.add.group();
 
@@ -42,7 +39,7 @@ SceneSpaceship.prototype = {
                 }
             }
             if (!foundSocks) {
-                socks = this.items.create(550, 400, 'socks');
+                socks = this.items.create(198, 398, 'socks');
                 socks.anchor.setTo(0,0);
                 socks.inputEnabled = true;
                 socks.events.onInputDown.add(this.interactItem, this);
@@ -50,21 +47,24 @@ SceneSpaceship.prototype = {
         }
 
         // spaceship
-        spaceship = this.items.create(460, 250, 'spaceship');
+        spaceship = this.items.create(275, 108, 'spaceship');
         spaceship.anchor.setTo(0,0);
         spaceship.inputEnabled = true;
         spaceship.events.onInputDown.add(this.interactItem, this);
+
+        // player
+        player.create();
 
         this.topText = game.add.text(
             20,
             20,
             '',
             {
-                font: "18px coolstory",
+                font: "20px coolstory",
                 fill: '#fff',
                 align: 'left',
                 stroke: '#000',
-                strokeThickness: 4
+                strokeThickness: 10
             }
         );
 
@@ -158,7 +158,7 @@ SceneSpaceship.prototype = {
 
             menuOpened = true;
             // open menu-do-2
-            menuDo2 = this.interactItemMenu.create(spaceship.x, spaceship.y - 100, 'menu-do-2');
+            menuDo2 = this.interactItemMenu.create(spaceship.x + 100, spaceship.y + 40, 'menu-do-2');
 
             // close
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');

@@ -11,6 +11,11 @@ Player.prototype = {
         this.sprite = game.add.sprite(playerX, playerY, 'chibi-walk');
         this.sprite.anchor.setTo(0.5,1);
 
+        // walk animation
+        this.isMoving = false;
+        this.sprite.loadTexture('chibi-walk', 0);
+        this.sprite.animations.add('chibi-walk');
+
         // move character on input down/tap
         game.input.onDown.add(this.moveCharacter, this);
     },
@@ -18,7 +23,7 @@ Player.prototype = {
         var pointerX = pointer.x,
             pointerY = pointer.y,
             duration;
-
+        console.log('move player');
         if (menuOpened) {
             return;
         }
@@ -34,7 +39,7 @@ Player.prototype = {
         this.isMoving = true;
 
         //  300 = 300 pixels per second = the speed the sprite will move at, regardless of the distance it has to travel
-        duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 300) * 1000;
+        duration = (game.physics.arcade.distanceToPointer(this.sprite, pointer) / 100) * 1000;
 
         // limits
         if (pointerX < 70) {
@@ -71,11 +76,13 @@ Player.prototype = {
         }
     },
     update: function() {
+        console.log('update');
         if (this.isMoving) {
+            console.log('moving');
             // player moving
             this.sprite.animations.play('chibi-walk', 6, true);
         } else {
-            this.sprite.animations.stop();
+            //this.sprite.animations.stop();
         }
     },
     changeScene: function(currentScene, direction) {
