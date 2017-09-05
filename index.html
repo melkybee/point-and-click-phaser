@@ -15,7 +15,8 @@
       }
 
       * {
-        margin: 0;
+        margin: 0 auto;
+        margin-top: 20px;
         padding: 0;
         font-family: 'coolstory', sans-serif;
       }
@@ -54,8 +55,8 @@
        */
       function initApp() {
           // screen dimensions
-          document.getElementById('game_div').style.height = 720; //(screen.height > screen.width) ? screen.width : screen.height;
-          document.getElementById('game_div').style.width = 480; //(screen.width > screen.height) ? screen.height : screen.width;
+          document.getElementById('game_div').style.height = 720;
+          document.getElementById('game_div').style.width = 480;
 
           // Init game
           game.state.add('game', Game);
@@ -70,13 +71,6 @@
 
           // load things
           game.state.start('game');
-      }
-
-      /**
-       * Open browser in device
-       */
-      function openDeviceBrowser(externalLinkToOpen) {
-        window.open(externalLinkToOpen, '_system', 'location=no');
       }
 
       /**
