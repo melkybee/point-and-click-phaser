@@ -127,6 +127,9 @@ var GAME_WIDTH = 720,
                 '0': 'Zombie by water ending!'
             }
         },
+        'lake': {
+            '0': 'The water from the lake is almost hypnotizing.'
+        },
         'made_fuel': {
             '0': 'Fuel was created.'
         },

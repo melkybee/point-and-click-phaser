@@ -59,8 +59,8 @@ SceneSpaceship.prototype = {
         console.log('clicked on = ' + pointer.key);
         if (pointer.key === 'socks') {
             menuOpened = true;
-            // open menu-do-look-pick
-            menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
+            // open menu-do-2
+            menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-2');
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
