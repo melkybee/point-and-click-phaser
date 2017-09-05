@@ -190,6 +190,8 @@ Game.prototype = {
         game.load.image('menu-items-2', 'img/menus/menuItems2.png', 120, 80);
         game.load.image('menu-items-3', 'img/menus/menuItems3.png', 120, 120);
 
+        game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 96, 36);
+
         console.log('game = ' , game);
 
     },

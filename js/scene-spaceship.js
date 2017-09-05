@@ -1,6 +1,8 @@
 SceneSpaceship = function() {
     this.items = null;
     this.interactItemMenu = null;
+    this.lookAtButton = null,
+    this.pickUpButton = null;
 };
 
 SceneSpaceship.prototype = {
@@ -43,22 +45,22 @@ SceneSpaceship.prototype = {
             menuOpened = true;
             // open menu-do-look-pick
             menuDoLookPick = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
-            menuDoLookPick.inputEnabled = true;
-            menuDoLookPick.events.onInputDown.add(function(thisPointer) {
-                console.log('clicked on = ' , thisPointer);
-                console.log('pointer ' + thisPointer.y);
-                console.log('menu ' + menuDoLookPick.y);
-                if (thisPointer.y < (menuDoLookPick.height+40)) {
-                    console.log('look at');
-                } else if ((thisPointer.y >= (menuDoLookPick.height+40)) && (thisPointer.y < (menuDoLookPick.height+80))) {
-                    console.log('pick up');
-                }
-            }, this);
+            this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
+            this.lookAtButton.inputEnabled = true;
+            this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                console.log('clicked on lookAtPointer = ' , lookAtPointer);
+            }, {game:game, player:player});
+            this.pickUpButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 44, 'menu-item-btn');
+            this.pickUpButton.inputEnabled = true;
+            this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
+                console.log('clicked on pickUpPointer = ' , pickUpPointer);
+//                this.game.collectItem(this.player, this.item);
+            }, {game:game, player:player, item:pointer});
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }
     },
-    interactItemMenu: function(pointer) {
-        console.log('clicked on = ' , pointer);
+    interactItemMenu: function() {
+        console.log('pick up = ' , item.key);
     }
 };
