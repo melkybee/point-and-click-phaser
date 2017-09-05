@@ -1,7 +1,7 @@
 SceneSpaceship = function() {
     this.items = null;
     this.interactItemMenu = null;
-    this.lookAtButton = null,
+    this.lookAtButton = null;
     this.pickUpButton = null;
 };
 
@@ -65,6 +65,8 @@ SceneSpaceship.prototype = {
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.pickUpButton);
+
+                menuOpened = false;
 
             }, {game: game, player: player, inventory: inventory, items: this.items, item:pointer, interactItemMenu:this.interactItemMenu, menu:menuDoLookPick, lookAtButton:this.lookAtButton, pickUpButton:this.pickUpButton});
         } else if (pointer.key === 'spaceship') {
