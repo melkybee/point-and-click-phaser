@@ -3,6 +3,7 @@ SceneSpaceship = function() {
     this.interactItemMenu = null;
     this.lookAtButton = null;
     this.pickUpButton = null;
+    this.closeButton = null;
     this.topText = null;
 };
 
@@ -16,8 +17,6 @@ SceneSpaceship.prototype = {
 
         // player
         player.create();
-
-        console.log('ship game = ' , game);
 
         // items
         this.items = game.add.group();
@@ -76,12 +75,23 @@ SceneSpaceship.prototype = {
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.pickUpButton);
+                this.interactItemMenu.remove(this.closeButton);
 
                 menuOpened = false;
 
-                this.showTopText(this.topText, 'Picked up ' + this.item.key);
+                this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
-            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
+            this.closeButton.inputEnabled = true;
+            this.closeButton.events.onInputDown.add(function(closePointer) {
+                this.interactItemMenu.remove(this.menu);
+                this.interactItemMenu.remove(this.lookAtButton);
+                this.interactItemMenu.remove(this.pickUpButton);
+                this.interactItemMenu.remove(closePointer);
+
+                menuOpened = false;
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }

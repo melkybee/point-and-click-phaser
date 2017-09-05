@@ -41,6 +41,7 @@ var GAME_WIDTH = 720,
     inventory = {
         // scene - spaceship
         'socks': {
+            'key': 'socks',
             'count': 0,
             'title': 'A pair of sweaty socks',
             'description': 'Ew! My smelly socks still fresh with perspiration.'
@@ -48,11 +49,13 @@ var GAME_WIDTH = 720,
 
         // scene - tent
         'jar': {
+            'key': 'jar',
             'count': 0,
             'title': 'An empty glass jar',
-            'description': 'Ah! I wonder what I can fill this up with.'
+            'description': 'Ah! An empty jar! I wonder what I can fill this up with.'
         },
         'jar_fuel': {
+            'key': 'jar_fuel',
             'count': 0,
             'title': 'A jar full of fuel',
             'description': 'Yay! Now I have a jar full of fuel!'
@@ -60,11 +63,13 @@ var GAME_WIDTH = 720,
 
         // scene - lake
         'jar_water' : {
+            'key': 'jar_water',
             'count': 0,
             'title': 'A jar full of water',
             'description': 'The jar is now full of water. I better not drink it.'
         },
         'wood': {
+            'key': 'wood',
             'count': 0,
             'title': 'Fresh plastic wood',
             'description': 'Great, now I can rebuild my ship with this mysterious plastic wood.'
@@ -95,6 +100,9 @@ var GAME_WIDTH = 720,
 
     menuOpened = false,
 
+    cauldronList = [],
+
+    jarState = 'EMPTY',  // WATER, FUEL
 
     // dialog
     dialog = {
@@ -105,10 +113,8 @@ var GAME_WIDTH = 720,
             '0': 'Properties of wood, using it on vehicles.'
         },
         'cauldron': {
-            '0': 'Combine 3 items to make something cool.'
-        },
-        'cauldron_contains': {
-            '0': 'The cauldron contains: '
+            '0': 'An old cauldron. Combine 2 items to make something cool.',
+            '1': 'The cauldron contains: '
         },
         'ending': {
             'spaceship': {
@@ -183,6 +189,10 @@ Game.prototype = {
 
         // items
         game.load.image('socks', 'img/items/socks.png', 40, 40);
+        game.load.image('jar', 'img/items/jar.png', 40, 40);
+
+        game.load.image('cauldron', 'img/items/cauldron.png', 100, 100);
+        game.load.image('lake', 'img/items/lake.png', 400, 150);
 
         // item menu assets
         game.load.image('menu-do-look-chop', 'img/menus/menuDoLookChop.png', 100, 100);
@@ -196,6 +206,8 @@ Game.prototype = {
         game.load.image('menu-items-3', 'img/menus/menuItems3.png', 120, 120);
 
         game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 96, 36);
+
+        game.load.image('menu-close-btn', 'img/menus/closeButton.png', 40, 40);
 
         console.log('game = ' , game);
 
