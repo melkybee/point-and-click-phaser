@@ -15,6 +15,7 @@ SceneTent.prototype = {
     preload: function() {
         currentScene = 'scene-tent';
         player = new Player();
+        menuOpened = false;
     },
     create: function() {
         this.background = game.add.sprite(0, 0, 'bg-tent');
@@ -66,6 +67,7 @@ SceneTent.prototype = {
             menuOpened = true;
             // open menu-do-look-pick
             menuDoLookPick = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
@@ -90,7 +92,6 @@ SceneTent.prototype = {
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
             }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
@@ -107,6 +108,7 @@ SceneTent.prototype = {
             menuOpened = true;
             // open menu-do-look-pick
             menuDoLookPick = this.interactItemMenu.create(cauldron.x, cauldron.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
@@ -218,7 +220,6 @@ SceneTent.prototype = {
                     this.showTopText(this.topText, 'You have no items in your inventory to add into the cauldron.');
                 }
             }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);

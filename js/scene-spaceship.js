@@ -11,6 +11,7 @@ SceneSpaceship.prototype = {
     preload: function() {
         currentScene = 'scene-spaceship';
         player = new Player();
+        menuOpened = false;
     },
     create: function() {
         this.background = game.add.sprite(0, 0, 'bg-spaceship');
@@ -58,6 +59,7 @@ SceneSpaceship.prototype = {
             menuOpened = true;
             // open menu-do-look-pick
             menuDoLookPick = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
+            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
@@ -82,7 +84,6 @@ SceneSpaceship.prototype = {
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
             }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
-            this.closeButton = this.interactItemMenu.create(menuDoLookPick.x + 102, menuDoLookPick.y - 42, 'menu-close-btn');
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
