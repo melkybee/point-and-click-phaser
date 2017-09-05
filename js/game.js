@@ -15,6 +15,7 @@ var GAME_WIDTH = 720,
 
     // tap
     tap,
+    music,
 
     // current scene
     currentScene = 'scene-spaceship',
@@ -172,6 +173,10 @@ Game.prototype = {
 
         // preload all of the game assets
 
+        // audio
+        game.load.audio('maintheme', ['sound/maintheme.wav']);
+        game.load.audio('tap', ['sound/tap.wav']);
+
         // menu assets
         game.load.image('title', 'img/title.png');
         game.load.image('playButton', 'img/play-btn.png', 180, 44);
@@ -218,9 +223,7 @@ Game.prototype = {
         game.state.start('title');
     },
     collectItem: function(player, item) {
-        console.log('collect: ' + item.key);
         inventory[item.key].count = 1;
         this.items.remove(item);
-        console.log('inventory = ' , inventory);
     }
 };

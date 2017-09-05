@@ -120,7 +120,6 @@ SceneTent.prototype = {
 
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
-                console.log('inventory = ' , this.inventory);
 
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
@@ -279,7 +278,6 @@ SceneTent.prototype = {
                                 this.inventory.socks.count = 0;
                                 this.cauldronList.push(this.inventory.socks.key);
 
-                                console.log('inventory = ' , this.inventory);
 
                                 this.interactItemMenu.remove(this.menu);
                                 this.interactItemMenu.remove(this.lookAtButton);
@@ -316,7 +314,6 @@ SceneTent.prototype = {
                                 this.inventory.jar_water.count = 0;
                                 this.inventory.jar.count = 1;
 
-                                console.log('inventory = ' , this.inventory);
 
                                 this.interactItemMenu.remove(this.menu);
                                 this.interactItemMenu.remove(this.lookAtButton);
@@ -388,7 +385,6 @@ SceneTent.prototype = {
                             this.inventory.jar.count = 0;
                             this.inventory.jar_fuel.count = 1;
 
-                            console.log('inventory = ' , this.inventory);
                         } else {
                             txt = this.dialog.cauldron[2];
                         }

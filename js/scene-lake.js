@@ -173,8 +173,6 @@ SceneLake.prototype = {
                         this.inventory.jar_water.count = 1;
                         this.inventory.jar.count = 0;
 
-                        console.log('inventory = ' , this.inventory);
-
                         this.interactItemMenu.remove(this.menu);
                         this.interactItemMenu.remove(this.lookAtButton);
                         this.interactItemMenu.remove(this.useWithButton);

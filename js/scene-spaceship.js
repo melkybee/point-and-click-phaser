@@ -237,8 +237,6 @@ SceneSpaceship.prototype = {
                         this.inventory.jar.count = 1;
                         this.inventory.jar_fuel.count = 0;
 
-                        console.log('inventory = ' , this.inventory);
-
                         this.interactItemMenu.remove(this.menu);
                         this.interactItemMenu.remove(this.lookAtButton);
                         this.interactItemMenu.remove(this.useWithButton);
@@ -257,11 +255,9 @@ SceneSpaceship.prototype = {
 
                         if (drankWater) {
                             // GO TO ENDING - SPACESHIP AS MUTANT
-                            console.log('GO TO ENDING - SPACESHIP AS MUTANT');
                             game.state.start('ending-2');
                         } else {
                             // GO TO ENDING - SPACESHIP AS HUMAN
-                            console.log('GO TO ENDING - SPACESHIP AS HUMAN');
                             game.state.start('ending-1');
                         }
 
