@@ -39,10 +39,7 @@
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/scene-spaceship.js"></script>
     <script type="text/javascript" src="js/scene-lake.js"></script>
-    <script type="text/javascript" src="js/scene-forest.js"></script>
-    <script type="text/javascript" src="js/scene-outer-house.js"></script>
-    <script type="text/javascript" src="js/scene-inner-house.js"></script>
-    <script type="text/javascript" src="js/scene-basement.js"></script>
+    <script type="text/javascript" src="js/scene-tent.js"></script>
 
     <script>
       if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
@@ -59,18 +56,14 @@
           document.getElementById('game_div').style.width = 480; //(screen.width > screen.height) ? screen.height : screen.width;
 
           // Init game
-          game.state.add('boot', Boot);
           game.state.add('game', Game);
           game.state.add('player', Player);
           game.state.add('scene-spaceship', SceneSpaceship);
           game.state.add('scene-lake', SceneLake);
-          game.state.add('scene-forest', SceneForest);
-          game.state.add('scene-outer-house', SceneOuterHouse);
-          game.state.add('scene-inner-house', SceneInnerHouse);
-          game.state.add('scene-basement', SceneBasement);
+          game.state.add('scene-tent', SceneTent);
 
           // start game
-          game.state.start('boot');
+          game.state.start('game');
       }
 
     </script>

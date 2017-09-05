@@ -92,41 +92,17 @@ Player.prototype = {
                 game.state.start('scene-lake');
             } else if (direction === 'right') {
                 playerX = playerLeftX;
-                game.state.start('scene-outer-house');
+                game.state.start('scene-tent');
             }
         } else if (currentScene === 'scene-lake') {
-            if (direction === 'left') {
-                playerX = playerRightX;
-                game.state.start('scene-forest');
-            } else if (direction === 'right') {
-                playerX = playerLeftX;
-                game.state.start('scene-spaceship');
-            }
-        } else if (currentScene === 'scene-forest') {
             if (direction === 'right') {
                 playerX = playerLeftX;
-                game.state.start('scene-lake');
+                game.state.start('scene-spaceship');
             }
-        } else if (currentScene === 'scene-outer-house') {
+        } else if (currentScene === 'scene-tent') {
             if (direction === 'left') {
                 playerX = playerRightX;
                 game.state.start('scene-spaceship');
-            } else if (direction === 'right') {
-                playerX = playerLeftX;
-                game.state.start('scene-inner-house');
-            }
-        } else if (currentScene === 'scene-inner-house') {
-            if (direction === 'left') {
-                playerX = playerRightX;
-                game.state.start('scene-outer-house');
-            } else if (direction === 'down') {
-                playerX = playerRightX;
-                game.state.start('scene-basement');
-            }
-        } else if (currentScene === 'scene-basement') {
-            if (direction === 'up') {
-                playerX = playerLeftX;
-                game.state.start('scene-inner-house');
             }
         }
     },
