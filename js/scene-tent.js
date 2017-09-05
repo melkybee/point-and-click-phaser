@@ -275,7 +275,7 @@ SceneTent.prototype = {
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
                         if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
                             if (this.cauldronList.length < cauldronListMax) {
-                                this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the cauldron.');
+                                this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the old pot.');
                                 this.inventory.socks.count = 0;
                                 this.cauldronList.push(this.inventory.socks.key);
 
@@ -311,7 +311,7 @@ SceneTent.prototype = {
                     this.item2Button.events.onInputDown.add(function(item2Pointer) {
                         if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
                             if (this.cauldronList.length < cauldronListMax) {
-                                this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the cauldron. The jar is now empty.');
+                                this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the old pot. The jar is now empty.');
                                 this.cauldronList.push(this.inventory.jar_water.key);
                                 this.inventory.jar_water.count = 0;
                                 this.inventory.jar.count = 1;
