@@ -23,7 +23,7 @@ Player.prototype = {
         var pointerX = pointer.x,
             pointerY = pointer.y,
             duration;
-        console.log('move player');
+
         if (menuOpened) {
             return;
         }
@@ -76,13 +76,11 @@ Player.prototype = {
         }
     },
     update: function() {
-        console.log('update');
         if (this.isMoving) {
-            console.log('moving');
             // player moving
             this.sprite.animations.play('chibi-walk', 6, true);
         } else {
-            //this.sprite.animations.stop();
+            this.sprite.animations.stop();
         }
     },
     changeScene: function(currentScene, direction) {

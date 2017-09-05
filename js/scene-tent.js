@@ -26,14 +26,13 @@ SceneTent.prototype = {
     create: function() {
         this.background = game.add.sprite(0, 0, 'bg-tent');
 
-        // player
-        player.create();
-
         // items
         this.items = game.add.group();
 
-        // interactItemMenu
-        this.interactItemMenu = game.add.group();
+        // shed
+        shed = this.items.create(408, 148, 'shed');
+        shed.inputEnabled = true;
+        shed.events.onInputDown.add(this.interactItem, this);
 
         // jar
         if (!pickedUpJar) {
@@ -46,6 +45,12 @@ SceneTent.prototype = {
         cauldron = this.items.create(380, 350, 'cauldron');
         cauldron.inputEnabled = true;
         cauldron.events.onInputDown.add(this.interactItem, this);
+
+        // player
+        player.create();
+
+        // interactItemMenu
+        this.interactItemMenu = game.add.group();
 
         // text
         this.topText = game.add.text(
@@ -63,9 +68,12 @@ SceneTent.prototype = {
 
     },
     update: function() {
+        player.update();
     },
     interactItem: function(pointer) {
-        if (pointer.key === 'jar') {
+        if (pointer.key === 'shed') {
+            this.showTopText(this.topText, 'Oops, can\'t go in. The developer didn\'t have time to make the interior of the shed.');
+        } else if (pointer.key === 'jar') {
             if (menuOpened) {
                 return;
             }

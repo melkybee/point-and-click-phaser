@@ -29,9 +29,6 @@ SceneLake.prototype = {
         // items
         this.items = game.add.group();
 
-        // interactItemMenu
-        this.interactItemMenu = game.add.group();
-
         // sign
         sign = this.items.create(386, 380, 'sign');
         sign.anchor.setTo(0,0);
@@ -53,6 +50,9 @@ SceneLake.prototype = {
         lake.inputEnabled = true;
         lake.events.onInputDown.add(this.interactItem, this);
 
+        // interactItemMenu
+        this.interactItemMenu = game.add.group();
+
         this.topText = game.add.text(
             20,
             20,
@@ -68,6 +68,7 @@ SceneLake.prototype = {
 
     },
     update: function() {
+        player.update();
     },
     openInventory: function(pointer) {
 

@@ -195,6 +195,7 @@ Game.prototype = {
         game.load.image('lake', 'img/items/lake.png', 400, 100);
         game.load.image('sign', 'img/items/sign.png', 42, 52);
         game.load.image('tree', 'img/items/tree.png', 112, 184);
+        game.load.image('shed', 'img/items/shed.png', 314, 228);
 
         // item menu assets
         game.load.image('menu-do-1', 'img/menus/menuDo1.png', 100, 60);

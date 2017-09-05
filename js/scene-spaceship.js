@@ -27,9 +27,6 @@ SceneSpaceship.prototype = {
         // items
         this.items = game.add.group();
 
-        // interactItemMenu
-        this.interactItemMenu = game.add.group();
-
         // socks
         if (inventory.socks.count === 0) {
             var foundSocks = false;
@@ -55,6 +52,9 @@ SceneSpaceship.prototype = {
         // player
         player.create();
 
+        // interactItemMenu
+        this.interactItemMenu = game.add.group();
+
         this.topText = game.add.text(
             20,
             20,
@@ -70,6 +70,7 @@ SceneSpaceship.prototype = {
 
     },
     update: function() {
+        player.update();
     },
     openInventory: function(pointer) {
 
