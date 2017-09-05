@@ -16,7 +16,7 @@ Title.prototype = {
     },
     transitionGame : function() {
         // google analytics
-//        gaPlugin.trackEvent(gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Main Menu - Play Game", new Date().getMilliseconds());
+        trackGaEvent('Button', 'Click', 'Main Menu - Play Game');
 
         // start game
         game.state.start('scene-spaceship');
@@ -31,6 +31,9 @@ EndingOne.prototype = {
         game.load.bitmapFont('coolstory', 'fonts/coolstory.png', 'fonts/coolstory.fnt');
     },
     create : function() {
+        // google analytics
+        trackGaEvent('Scene', 'View', 'Ending 1');
+
         this.background = game.add.sprite(0, 0, 'bg-ending-1');
         this.topText = game.add.text(
             20,
@@ -43,8 +46,6 @@ EndingOne.prototype = {
                 stroke: '#000',
                 strokeThickness: 10
             }
-
-            //gaPlugin.trackEvent(gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Main Menu - Play Game", new Date().getMilliseconds());
         );
 
         game.time.events.add(Phaser.Timer.SECOND * 5, function(){ this.topText.text = 'He missed eating ramen, surfing, and playing video games.'; }, this);
@@ -63,6 +64,9 @@ EndingTwo.prototype = {
         game.load.bitmapFont('coolstory', 'fonts/coolstory.png', 'fonts/coolstory.fnt');
     },
     create : function() {
+        // google analytics
+        trackGaEvent('Scene', 'View', 'Ending 2');
+
         this.background = game.add.sprite(0, 0, 'bg-ending-2');
 
         this.topText = game.add.text(
@@ -76,8 +80,6 @@ EndingTwo.prototype = {
                 stroke: '#000',
                 strokeThickness: 10
             }
-
-            //gaPlugin.trackEvent(gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Main Menu - Play Game", new Date().getMilliseconds());
         );
 
         game.time.events.add(Phaser.Timer.SECOND * 5, function(){ this.topText.text = 'Unfortunately, nobody recognized him.'; }, this);
@@ -108,29 +110,14 @@ GameOver.prototype = {
                 align: 'left'
             }
         );
-        // share buttons
- //       shareTwitterButton = game.add.button(GAME_WIDTH/2-100, gameTitle.y + gameTitle.height + 80, 'shareTwitterButton', this.shareTwitter, this, 0, 0, 0);
- //       shareFacebookButton = game.add.button(GAME_WIDTH/2+10, gameTitle.y + gameTitle.height + 80, 'shareFacebookButton', this.shareFacebook, this, 0, 0, 0);
 
         // button
         mainMenuButton = game.add.button(GAME_WIDTH/2 - 100, GAME_HEIGHT - 140, 'mainMenuButton', this.transition, this, 0, 0, 0);
 
     },
-    shareTwitter : function() {
-        // google analytics
-//        gaPlugin.trackEvent( gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Game Over Menu - Share Twitter");
-
-        openDeviceBrowser('https://twitter.com/intent/tweet?url=http://melkybee.com&text=test&via=melkybee&hashtags=adventurejam,astrochibi,homeboundpredicament');
-    },
-    shareFacebook : function() {
-        // google analytics
-//        gaPlugin.trackEvent( gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Game Over Menu - Share Facebook");
-
-        openDeviceBrowser('https://www.facebook.com/sharer/sharer.php?u=http://melkybee.com');
-    },
     transition : function() {
         // google analytics
-//        gaPlugin.trackEvent( gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Game Over Menu - Back to Main Menu", new Date().getMilliseconds());
+        trackGaEvent('Button', 'Click', 'Game Over Menu - Back to Main Menu');
 
         // show menu screen
         game.state.start('title');

@@ -79,13 +79,35 @@
         window.open(externalLinkToOpen, '_system', 'location=no');
       }
 
+      /**
+       * Google Analytics
+       */
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-60731039-4', 'auto');
+      ga('send', 'pageview');
+
+      /**
+       *  Track Google Analytics event
+       */
+      function trackGaEvent(category, action, label, value) {
+          if (!ga) {
+              return;
+          }
+          if (!value) {
+              value = new Date().getMilliseconds();
+          }
+          ga('send', 'event', category, action, label, value);
+      }
+
     </script>
 
-    <br><br>
-    &nbsp;&nbsp;&nbsp;Need some background music?
-    <br><br>
-    &nbsp;&nbsp;&nbsp;<audio autoplay loop controls>
-      <source src="sound/maintheme.wav" type="audio/wav">
+    <audio autoplay loop>
+      <source src="sound/maintheme.mp3" type="audio/mpeg">
     </audio>
 
   </body>

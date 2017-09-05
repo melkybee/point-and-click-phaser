@@ -22,6 +22,8 @@ SceneSpaceship.prototype = {
         menuOpened = false;
     },
     create: function() {
+        // google analytics
+        trackGaEvent('Scene', 'View', 'Spaceship');
         this.background = game.add.sprite(0, 0, 'bg-spaceship');
 
         // items
@@ -80,6 +82,8 @@ SceneSpaceship.prototype = {
             if (menuOpened) {
                 return;
             }
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Socks');
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-2');
@@ -91,6 +95,8 @@ SceneSpaceship.prototype = {
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Socks - Look At');
                 this.showTopText(this.topText, inventory.socks.description);
             }, {topText:this.topText, showTopText:this.showTopText});
             // look at text
@@ -123,6 +129,8 @@ SceneSpaceship.prototype = {
             // pick up actions
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Socks - Pick Up');
 
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
@@ -143,6 +151,8 @@ SceneSpaceship.prototype = {
             // close
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Socks - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.pickUpButton);
@@ -156,7 +166,8 @@ SceneSpaceship.prototype = {
             if (menuOpened) {
                 return;
             }
-
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Spaceship');
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(spaceship.x + 100, spaceship.y + 40, 'menu-do-2');
@@ -169,6 +180,8 @@ SceneSpaceship.prototype = {
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.spaceship[0];
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Spaceship - Look At');
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
             // look at text
@@ -202,6 +215,9 @@ SceneSpaceship.prototype = {
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
                 var item1Txt = '?';
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Spaceship - Use With');
+
                 this.useWithButton.inputEnabled = false;
 
                 // remove closeButton
@@ -233,6 +249,8 @@ SceneSpaceship.prototype = {
                 if (this.inventory.jar_fuel.count === 1) {
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
+                        // google analytics
+                        trackGaEvent('Button', 'Click', 'Spaceship - Use With - Jar Fuel');
                         this.showTopText(this.topText, 'Fueling up my spaceship...');
                         this.inventory.jar.count = 1;
                         this.inventory.jar_fuel.count = 0;
@@ -265,12 +283,16 @@ SceneSpaceship.prototype = {
                     }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, lookAtText: this.lookAtText, useWithText: this.useWithText, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, closeButton:this.closeButton});
 
                 } else {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Spaceship - Use With - No Items');
                     this.showTopText(this.topText, 'I have no items in my inventory that can be used with the spaceship.');
                 }
 
                 // re-add closeButton actions
                 this.closeButton.inputEnabled = true;
                 this.closeButton.events.onInputDown.add(function(closePointer) {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Spaceship - Close');
                     this.interactItemMenu.remove(this.menu);
                     this.interactItemMenu.remove(this.lookAtButton);
                     this.interactItemMenu.remove(this.useWithButton);
@@ -289,6 +311,8 @@ SceneSpaceship.prototype = {
             // close button
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Spaceship - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.useWithButton);

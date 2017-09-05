@@ -24,6 +24,8 @@ SceneTent.prototype = {
         menuOpened = false;
     },
     create: function() {
+        // google analytics
+        trackGaEvent('Scene', 'View', 'Tent');
         this.background = game.add.sprite(0, 0, 'bg-tent');
 
         // items
@@ -72,11 +74,18 @@ SceneTent.prototype = {
     },
     interactItem: function(pointer) {
         if (pointer.key === 'shed') {
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Shed');
+
             this.showTopText(this.topText, 'Oops, can\'t go in. The developer didn\'t have time to make the interior of the shed.');
         } else if (pointer.key === 'jar') {
             if (menuOpened) {
                 return;
             }
+
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Jar');
+
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-2');
@@ -87,6 +96,8 @@ SceneTent.prototype = {
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Jar - Look At');
                 this.showTopText(this.topText, inventory.jar.description);
             }, {topText:this.topText, showTopText:this.showTopText});
             // look at text
@@ -117,7 +128,8 @@ SceneTent.prototype = {
             // pick up actions
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
-
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Jar - Pick Up');
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
 
@@ -138,6 +150,8 @@ SceneTent.prototype = {
             }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, lookAtText: this.lookAtText, pickUpText: this.pickUpText, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Jar - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.pickUpButton);
@@ -152,6 +166,9 @@ SceneTent.prototype = {
             if (menuOpened) {
                 return;
             }
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Cauldron');
+
             menuOpened = true;
             // open menu-do-3
             menuDo3 = this.interactItemMenu.create(cauldron.x, cauldron.y - 140, 'menu-do-3');
@@ -177,6 +194,9 @@ SceneTent.prototype = {
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var i,
                     txt = dialog.cauldron[0];
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Cauldron - Look At');
+
                 if (this.inventory.jar_fuel.count === 1) {
                     txt = dialog.cauldron[5];
                 } else {
@@ -227,6 +247,10 @@ SceneTent.prototype = {
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
                 var item1Txt = '?',
                     item2Txt = '?';
+
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Cauldron - Use With');
+
                 this.useWithButton.inputEnabled = false;
 
                 // remove closeButton
@@ -274,6 +298,9 @@ SceneTent.prototype = {
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
                         if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
                             if (this.cauldronList.length < cauldronListMax) {
+                                // google analytics
+                                trackGaEvent('Button', 'Click', 'Cauldron - Use With - Socks');
+
                                 this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the old pot.');
                                 this.inventory.socks.count = 0;
                                 this.cauldronList.push(this.inventory.socks.key);
@@ -309,6 +336,8 @@ SceneTent.prototype = {
                     this.item2Button.events.onInputDown.add(function(item2Pointer) {
                         if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
                             if (this.cauldronList.length < cauldronListMax) {
+                                // google analytics
+                                trackGaEvent('Button', 'Click', 'Cauldron - Use With - Jar Water');
                                 this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the old pot. The jar is now empty.');
                                 this.cauldronList.push(this.inventory.jar_water.key);
                                 this.inventory.jar_water.count = 0;
@@ -351,6 +380,8 @@ SceneTent.prototype = {
                 // re-add closeButton actions
                 this.closeButton.inputEnabled = true;
                 this.closeButton.events.onInputDown.add(function(closePointer) {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Cauldron - Close');
                     this.interactItemMenu.remove(this.menu);
                     this.interactItemMenu.remove(this.lookAtButton);
                     this.interactItemMenu.remove(this.useWithButton);
@@ -378,18 +409,26 @@ SceneTent.prototype = {
                 var txt = '';
                 if (hasStrength) {
                     if (this.inventory.jar_fuel.count === 1) {
+                        // google analytics
+                        trackGaEvent('Button', 'Click', 'Cauldron - Stir - Has Strength - Already Fueled');
                         this.showTopText(this.topText, this.dialog.cauldron[6]);
                     } else {
                         if (cauldronList.length === 2) {
+                            // google analytics
+                            trackGaEvent('Button', 'Click', 'Cauldron - Stir - Has Strength - Make Fuel');
                             txt = this.dialog.cauldron[4];
                             this.inventory.jar.count = 0;
                             this.inventory.jar_fuel.count = 1;
 
                         } else {
+                            // google analytics
+                            trackGaEvent('Button', 'Click', 'Cauldron - Stir - Has Strength - Not Enough Items');
                             txt = this.dialog.cauldron[2];
                         }
                     }
                 } else {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Cauldron - Stir - No Strength');
                     txt = this.dialog.cauldron[3];
                 }
                 this.showTopText(this.topText, txt);
@@ -398,6 +437,8 @@ SceneTent.prototype = {
             // close button
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Cauldron - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.useWithButton);

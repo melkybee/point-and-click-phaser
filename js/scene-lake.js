@@ -24,6 +24,8 @@ SceneLake.prototype = {
         menuOpened = false;
     },
     create: function() {
+        // google analytics
+        trackGaEvent('Scene', 'View', 'Lake');
         this.background = game.add.sprite(0, 0, 'bg-lake');
 
         // items
@@ -78,6 +80,8 @@ SceneLake.prototype = {
             if (menuOpened) {
                 return;
             }
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Lake');
             menuOpened = true;
             // open menu-do-2
             menuDo3 = this.interactItemMenu.create(lake.x + 200, lake.y - 100, 'menu-do-3');
@@ -90,6 +94,8 @@ SceneLake.prototype = {
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.lake[0];
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Lake - Look At');
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
             // look at text
@@ -138,6 +144,8 @@ SceneLake.prototype = {
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
                 var item1Txt = '?';
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Lake - Use With');
                 this.useWithButton.inputEnabled = false;
 
                 // remove closeButton
@@ -169,6 +177,8 @@ SceneLake.prototype = {
                 if (this.inventory.jar.count === 1) {
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
+                        // google analytics
+                        trackGaEvent('Button', 'Click', 'Lake - Use With - Jar');
                         this.showTopText(this.topText, 'The jar is now full of water from the lake.');
                         this.inventory.jar_water.count = 1;
                         this.inventory.jar.count = 0;
@@ -191,12 +201,16 @@ SceneLake.prototype = {
                     }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, drinkButton: this.drinkButton, lookAtText: this.lookAtText, useWithText: this.useWithText, drinkText: this.drinkText, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item1Text: this.item1Text, closeButton:this.closeButton});
 
                 } else {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Lake - Use With - No Items');
                     this.showTopText(this.topText, 'I have no items in my inventory that can be used with the lake.');
                 }
 
                 // re-add closeButton actions
                 this.closeButton.inputEnabled = true;
                 this.closeButton.events.onInputDown.add(function(closePointer) {
+                    // google analytics
+                    trackGaEvent('Button', 'Click', 'Lake - Close');
                     this.interactItemMenu.remove(this.menu);
                     this.interactItemMenu.remove(this.lookAtButton);
                     this.interactItemMenu.remove(this.useWithButton);
@@ -219,6 +233,8 @@ SceneLake.prototype = {
             this.drinkButton.inputEnabled = true;
             this.drinkButton.events.onInputDown.add(function(drinkPointer) {
                 var txt = '';
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Lake - Drink');
                 if (drankWater) {
                     txt = dialog.lake[2];
                 } else {
@@ -231,6 +247,8 @@ SceneLake.prototype = {
             // close button
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Lake - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.useWithButton);
@@ -251,6 +269,8 @@ SceneLake.prototype = {
             if (menuOpened) {
                 return;
             }
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Sign');
             menuOpened = true;
             // open menu-do-2
             menuDo1 = this.interactItemMenu.create(sign.x + 0, sign.y - 60, 'menu-do-1');
@@ -260,6 +280,8 @@ SceneLake.prototype = {
             this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 10, menuDo1.y + 10, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Sign - Look At');
                 var txt = dialog.sign[0];
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
@@ -278,6 +300,8 @@ SceneLake.prototype = {
             // close
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Sign - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.chopButton);
@@ -290,6 +314,8 @@ SceneLake.prototype = {
             if (menuOpened) {
                 return;
             }
+            // google analytics
+            trackGaEvent('Item', 'Click', 'Tree');
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(tree.x + 0, tree.y - 60, 'menu-do-2');
@@ -302,6 +328,8 @@ SceneLake.prototype = {
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 var txt = dialog.tree[0];
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Tree - Look At');
                 this.showTopText(this.topText, txt);
             }, {topText:this.topText, showTopText:this.showTopText});
             // look at text
@@ -320,6 +348,8 @@ SceneLake.prototype = {
             this.chopButton = this.interactItemMenu.create(menuDo2.x + 10, menuDo2.y + 48, 'menu-item-btn');
             this.chopButton.inputEnabled = true;
             this.chopButton.events.onInputDown.add(function(chopPointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Tree - Chop');
                 var txt = '';
                 if (hasStrength) {
                     txt = dialog.tree[2];
@@ -343,6 +373,8 @@ SceneLake.prototype = {
 
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
+                // google analytics
+                trackGaEvent('Button', 'Click', 'Tree - Close');
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.chopButton);
