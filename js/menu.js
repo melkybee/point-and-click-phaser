@@ -28,7 +28,7 @@ Title.prototype = {
 
 // Game Over Screen
 GameOver = function(){
-    this.menuOverLabel = null;
+    this.theEndText = null;
 };
 GameOver.prototype = {
     preload : function() {
@@ -37,22 +37,25 @@ GameOver.prototype = {
         // game title
         gameTitle = game.add.sprite(GAME_WIDTH/2, 40, 'title');
         gameTitle.anchor.setTo(0.5,0);
-/*
-        // display the game over text
-        this.menuOverLabel = game.add.text(
-            game.world.width/2,
-            gameTitle.y + gameTitle.height + 32,
-            this.gameOverLabel,
-            STYLE_HEADER
+
+        // the end text
+        this.theEndText = game.add.text(
+            GAME_WIDTH/2 - 90,
+            GAME_HEIGHT - 300,
+            'THE END.',
+            {
+                font: "14px coolstory",
+                fill: '#fff',
+                align: 'left'
+            }
         );
-        this.menuOverLabel.anchor.setTo(0.5,0.5);
-*/
         // share buttons
  //       shareTwitterButton = game.add.button(GAME_WIDTH/2-100, gameTitle.y + gameTitle.height + 80, 'shareTwitterButton', this.shareTwitter, this, 0, 0, 0);
  //       shareFacebookButton = game.add.button(GAME_WIDTH/2+10, gameTitle.y + gameTitle.height + 80, 'shareFacebookButton', this.shareFacebook, this, 0, 0, 0);
 
-        // buttons
- //       mainMenuButton = game.add.button(GAME_WIDTH/2+10, gameTitle.y + gameTitle.height + 130, 'mainMenuButton', this.transition, this, 0, 0, 0);
+        // button
+        mainMenuButton = game.add.button(GAME_WIDTH/2 - 90, GAME_HEIGHT - 100, 'mainMenuButton', this.transition, this, 0, 0, 0);
+
     },
     shareTwitter : function() {
         // google analytics
@@ -71,7 +74,7 @@ GameOver.prototype = {
 //        gaPlugin.trackEvent( gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Game Over Menu - Back to Main Menu", new Date().getMilliseconds());
 
         // play tap sound
-        tap.play('',0,0.5,false);
+//        tap.play('',0,0.5,false);
 
         // show menu screen
         game.state.start('title');

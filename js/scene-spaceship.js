@@ -62,14 +62,11 @@ SceneSpaceship.prototype = {
             {
                 font: "18px coolstory",
                 fill: '#fff',
-                align: 'left'
+                align: 'left',
+                stroke: '#000',
+                strokeThickness: 4
             }
         );
-
-        // backpack
-        // backpack = game.add.sprite(660, 10, 'backpack');
-        // backpack.inputEnabled = true;
-        // backpack.events.onInputDown.add(this.openInventory, this);
 
     },
     update: function() {

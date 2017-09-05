@@ -19,9 +19,6 @@ var GAME_WIDTH = 720,
     // current scene
     currentScene = 'scene-spaceship',
 
-    // backpack on screen opens inventory menu
-    backpack,
-
     // inventory menu
     inventoryMenu,
 
@@ -91,13 +88,8 @@ var GAME_WIDTH = 720,
     tree = null,  // LOOK AT, CHOP
     sign = null,  // READ
 
-
-    // backpack to inventory menu
-    backpack = null,
-
-
     // player properties
-    hasStrength = false, // 'true' after chopping wood
+    hasStrength = false, // 'true' after punching tree
 
     drankWater = false, // 'true' after drinking lake water
 
@@ -112,14 +104,14 @@ var GAME_WIDTH = 720,
             '0': 'Chapter 5...How to make fuel...Radioactive water and human sweat!'
         },
         'cauldron': {
-            '0': 'An old cauldron. Combine 2 items to make something cool.',
-            '1': 'The cauldron contains: ',
+            '0': 'An old pot on a stove. Combine 2 items to make something cool.',
+            '1': 'The old pot contains: ',
             '2': 'I don\'t have enough things in here yet to stir.',
             '3': 'Grrr...The ladle won\'t budge!',
             '4': 'Stirring...I\'ve made fuel! Putting the fuel now in the jar!',
-            '5': 'The cauldron has some drops of fuel at the very bottom.',
+            '5': 'Nothing there. I\'ve already put the fuel in my glass jar.',
             '6': 'I\'ve made what I needed to make -- fuel! Let\'s fuel up my spaceship and go home!',
-            '7': 'You have no items in your inventory that can be added into the cauldron.'
+            '7': 'I have no items in my inventory that can be added into the pot.'
         },
         'ending': {
             'spaceship_human': {
@@ -135,13 +127,13 @@ var GAME_WIDTH = 720,
             '2': 'Please, I don\'t wanna drink this anymore.'
         },
         'sign': {
-            '0': 'Don\'t drink the water!'
+            '0': 'DON\'T DRINK THE WATER!'
         },
         'spaceship': {
             '0': 'My spaceship needs a bit of fuel so I can get home!'
         },
         'tree': {
-            '0': 'Chop the tree and get stronger!',
+            '0': 'Punch the tree and get stronger!',
             '1': 'I suddenly feel much stronger!',
             '2': 'Not again! I\'m exhausted!'
         }
@@ -150,6 +142,7 @@ var GAME_WIDTH = 720,
     menuOptions = {
         'LOOK_AT': 'LOOK AT',
         'PICK_UP': 'PICK UP',
+        'PUNCH': 'PUNCH',
         'READ': 'READ',
         'STIR': 'STIR',
         'USE_WITH': 'USE WITH'
@@ -215,8 +208,6 @@ Game.prototype = {
         game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 96, 36);
 
         game.load.image('menu-close-btn', 'img/menus/closeButton.png', 40, 40);
-
-        game.load.image('backpack', 'img/backpack.png', 40, 40);
 
     },
     create: function() {
