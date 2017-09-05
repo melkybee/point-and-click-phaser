@@ -68,13 +68,7 @@ var GAME_WIDTH = 720,
             'key': 'jar_water',
             'count': 0,
             'title': 'A jar full of water',
-            'description': 'The jar is now full of water. I better not drink it.'
-        },
-        'wood': {
-            'key': 'wood',
-            'count': 0,
-            'title': 'Fresh plastic wood',
-            'description': 'Great, now I can rebuild my ship with this mysterious plastic wood.'
+            'description': 'The jar is now full of water.'
         }
     },
 
@@ -87,13 +81,11 @@ var GAME_WIDTH = 720,
     // scene - tent
     cauldron = null,  // LOOK AT, USE WITH - water/socks
     jar = null,  // LOOK AT, PICK UP, USE WITH - water, fuel
-    bookLake = null,  // READ
-    bookTrees = null,  // READ
+    book = null,  // READ
 
     // scene - lake
     lake = null,  // LOOK AT, USE WITH - jar
     tree = null,  // LOOK AT, CHOP
-    wood = null,  // LOOK AT, PICK UP
     sign = null,  // READ
 
 
@@ -104,6 +96,8 @@ var GAME_WIDTH = 720,
     // player properties
     hasStrength = false, // 'true' after chopping wood
 
+    drankWater = false, // 'true' after drinking lake water
+
     menuOpened = false,
 
     cauldronList = [],
@@ -111,47 +105,42 @@ var GAME_WIDTH = 720,
 
     // dialog
     dialog = {
-        'book_lake': {
-            '0': 'Properties of lake, how to make fuel.'
-        },
-        'book_trees': {
-            '0': 'Properties of wood, using it on vehicles.'
+        'book': {
+            '0': 'Chapter 5...How to make fuel...Radioactive water and human sweat!'
         },
         'cauldron': {
             '0': 'An old cauldron. Combine 2 items to make something cool.',
-            '1': 'The cauldron contains: '
+            '1': 'The cauldron contains: ',
+            '2': 'I don\'t have enough things in here yet to stir.',
+            '3': 'Grrr...The ladle won\'t budge!',
+            '4': 'Stirring...I\'ve made fuel! Putting the fuel now in the jar!',
+            '5': 'The cauldron has some drops of fuel at the very bottom.',
+            '6': 'I\'ve made what I needed to make -- fuel! Let\'s fuel up my spaceship and go home!',
+            '7': 'You have no items in your inventory that can be added into the cauldron.'
         },
         'ending': {
-            'spaceship': {
-                '0': 'Spaceship ending!'
+            'spaceship_human': {
+                '0': 'Regular spaceship ending!'
             },
-            'monster_by_fuel': {
-                '0': 'Monster by fuel ending!'
-            },
-            'zombie_by_water': {
-                '0': 'Zombie by water ending!'
+            'spaceship_mutant': {
+                '0': 'Spaceship ending but as a mutant!'
             }
         },
         'lake': {
-            '0': 'The water from the lake is almost hypnotizing.'
-        },
-        'made_fuel': {
-            '0': 'Fuel was created.'
-        },
-        'no_way': {
-            '0': 'No way!'
-        },
-        'nothing': {
-            '0': 'Nothing happened!'
+            '0': 'The water from the lake is almost hypnotizing.',
+            '1': 'Glug glug glug! Ohhh...I feel...not the same anymore. What is wrong with me...',
+            '2': 'Please, I don\'t wanna drink this anymore.'
         },
         'sign': {
             '0': 'Don\'t drink the water!'
         },
-        'strength': {
-            '0': 'I suddenly feel much stronger!'
+        'spaceship': {
+            '0': 'My spaceship needs a bit of fuel so I can get home!'
         },
         'tree': {
-            '0': 'Chop the tree and get stronger!'
+            '0': 'Chop the tree and get stronger!',
+            '1': 'I suddenly feel much stronger!',
+            '2': 'Not again! I\'m exhausted!'
         }
     },
 
@@ -201,10 +190,12 @@ Game.prototype = {
         game.load.image('bg-lake', 'img/bg-lake.png', 720, 480);
         game.load.image('bg-tent', 'img/bg-tent.png', 720, 480);
 
-        // items
+        // items for inventory
         game.load.image('socks', 'img/items/socks.png', 40, 40);
         game.load.image('jar', 'img/items/jar.png', 40, 40);
 
+        // items that can't be picked up but can be interacted with
+        game.load.image('spaceship', 'img/items/spaceship.png', 100, 150);
         game.load.image('cauldron', 'img/items/cauldron.png', 100, 100);
         game.load.image('lake', 'img/items/lake.png', 400, 150);
         game.load.image('sign', 'img/items/sign.png', 40, 40);

@@ -9,6 +9,12 @@ SceneTent = function() {
     this.item1Button = null;
     this.item2Button = null;
     this.topText = null;
+
+    this.lookAtText = null;
+    this.pickUpText = null;
+    this.useWithText = null;
+    this.item1Text = null;
+    this.item2Text = null;
 };
 
 SceneTent.prototype = {
@@ -69,13 +75,41 @@ SceneTent.prototype = {
             menuOpened = true;
             // open menu-do-2
             menuDo2 = this.interactItemMenu.create(jar.x, jar.y - 100, 'menu-do-2');
+
             this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            
+            // look at
             this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
                 this.showTopText(this.topText, inventory.jar.description);
             }, {topText:this.topText, showTopText:this.showTopText});
+            // look at text
+            this.lookAtText = game.add.text(
+                this.lookAtButton.x + 2,
+                this.lookAtButton.y + 2,
+                'LOOK AT',
+                {
+                    font: "14px dimbo",
+                    fill: '#000',
+                    align: 'left'
+                }
+            );
+
+            // pick up button
             this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            // pick up text
+            this.pickUpText = game.add.text(
+                this.pickUpButton.x + 2,
+                this.pickUpButton.y + 2,
+                'PICK UP',
+                {
+                    font: "14px dimbo",
+                    fill: '#000',
+                    align: 'left'
+                }
+            );
+            // pick up actions
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
 
@@ -88,13 +122,16 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(this.pickUpButton);
                 this.interactItemMenu.remove(this.closeButton);
 
+                this.lookAtText.destroy();
+                this.pickUpText.destroy();
+
                 pickedUpJar = true;
 
                 menuOpened = false;
 
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
 
-            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, lookAtText: this.lookAtText, pickUpText: this.pickUpText, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
@@ -102,39 +139,130 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(this.pickUpButton);
                 this.interactItemMenu.remove(closePointer);
 
+                this.lookAtText.destroy();
+                this.pickUpText.destroy();
+
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, lookAtText: this.lookAtText, pickUpText: this.pickUpText});
         } else if (pointer.key === 'cauldron') {
             if (menuOpened) {
                 return;
             }
             menuOpened = true;
-            // open menu-do-2
-            menuDo2 = this.interactItemMenu.create(cauldron.x, cauldron.y - 100, 'menu-do-2');
+            // open menu-do-3
+            menuDo3 = this.interactItemMenu.create(cauldron.x, cauldron.y - 140, 'menu-do-3');
 
             // close
-            this.closeButton = this.interactItemMenu.create(menuDo2.x + 102, menuDo2.y - 42, 'menu-close-btn');
+            this.closeButton = this.interactItemMenu.create(menuDo3.x + 102, menuDo3.y - 42, 'menu-close-btn');
 
             // look at
-            this.lookAtButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 2, 'menu-item-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 2, 'menu-item-btn');
+            // look at text
+            this.lookAtText = game.add.text(
+                this.lookAtButton.x + 2,
+                this.lookAtButton.y + 2,
+                'LOOK AT',
+                {
+                    font: "14px dimbo",
+                    fill: '#000',
+                    align: 'left'
+                }
+            );
+            // look at actions
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
-                var txt = dialog.cauldron[0];
-                if (cauldronList.length > 0) {
-                    txt = dialog.cauldron[1] + cauldronList;
+                var i,
+                    txt = dialog.cauldron[0];
+                if (this.inventory.jar_fuel.count === 1) {
+                    txt = dialog.cauldron[5];
+                } else {
+                    if (cauldronList.length > 0) {
+                        txt = '';
+                        for (i = 0; i < cauldronList.length; i++) {
+                            txt += '"' + this.inventory[cauldronList[i]].title + '"';
+                            if (i !== cauldronList.length - 1) {
+                                txt += ' and ';
+                            }
+                        }
+                        txt = dialog.cauldron[1] + txt;
+                    }
                 }
                 this.showTopText(this.topText, txt);
-            }, {topText:this.topText, showTopText:this.showTopText});
+            }, {topText:this.topText, showTopText:this.showTopText, inventory: inventory});
 
             // use with
-            this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
+            this.useWithButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 44, 'menu-item-btn');
+            // use with text
+            this.useWithText = game.add.text(
+                this.useWithButton.x + 2,
+                this.useWithButton.y + 2,
+                'USE WITH',
+                {
+                    font: "14px dimbo",
+                    fill: '#000',
+                    align: 'left'
+                }
+            );
+            
+            // stir
+            this.stirButton = this.interactItemMenu.create(menuDo3.x + 2, menuDo3.y + 84, 'menu-item-btn');
+            // stir text
+            this.stirText = game.add.text(
+                this.stirButton.x + 2,
+                this.stirButton.y + 2,
+                'STIR',
+                {
+                    font: "14px dimbo",
+                    fill: '#000',
+                    align: 'left'
+                }
+            );
+
+            // use with actions
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
+                var item1Txt = '?',
+                    item2Txt = '?';
+                this.useWithButton.inputEnabled = false;
+
+                // remove closeButton
+                this.interactItemMenu.remove(this.closeButton);
 
                 // item inner menu
-                this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-2');
-                this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
-                this.item2Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 44, 'menu-item-btn');
+                this.interactInnerMenu = this.interactItemMenu.create(menuDo3.x + 100, menuDo3.y, 'menu-items-2');
+                this.item1Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 2, 'menu-item-btn');
+                // item 1 text
+                if (this.inventory.socks.count === 1) {
+                    item1Txt = 'SWEATY SOCKS';
+                }
+                this.item1Text = game.add.text(
+                    this.item1Button.x + 2,
+                    this.item1Button.y + 2,
+                    item1Txt,
+                    {
+                        font: "14px dimbo",
+                        fill: '#000',
+                        align: 'left'
+                    }
+                );
+                this.item2Button = this.interactItemMenu.create(menuDo3.x + 122, menuDo3.y + 44, 'menu-item-btn');
+                // item 2 text
+                if (this.inventory.jar_water.count === 1) {
+                    item2Txt = 'MYSTIC WATER';
+                }
+                this.item2Text = game.add.text(
+                    this.item2Button.x + 2,
+                    this.item2Button.y + 2,
+                    item2Txt,
+                    {
+                        font: "14px dimbo",
+                        fill: '#000',
+                        align: 'left'
+                    }
+                );
+
+                // re-add close button
+                this.closeButton = this.interactItemMenu.create(menuDo3.x + 202, menuDo3.y - 42, 'menu-close-btn');
 
                 // item 1
                 if (this.inventory.socks.count === 1) {
@@ -151,16 +279,23 @@ SceneTent.prototype = {
                                 this.interactItemMenu.remove(this.menu);
                                 this.interactItemMenu.remove(this.lookAtButton);
                                 this.interactItemMenu.remove(this.useWithButton);
+                                this.interactItemMenu.remove(this.stirButton);
 
                                 this.interactItemMenu.remove(this.item1Button);
                                 this.interactItemMenu.remove(this.item2Button);
                                 this.interactItemMenu.remove(this.interactInnerMenu);
                                 this.interactItemMenu.remove(this.closeButton);
 
+                                this.lookAtText.destroy();
+                                this.useWithText.destroy();
+                                this.stirText.destroy();
+                                if (this.item1Text) { this.item1Text.destroy(); }
+                                if (this.item2Text) { this.item2Text.destroy(); }
+
                                 menuOpened = false;
                             }
                         }
-                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton});
+                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, stirButton: this.stirButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton, item1Text: this.item1Text, item2Text: this.item2Text, lookAtText: this.lookAtText, useWithText: this.useWithText, stirText: this.stirText});
                 } else if (this.inventory.socks.count === 0) {
                     // show question mark
                 }
@@ -181,26 +316,83 @@ SceneTent.prototype = {
                                 this.interactItemMenu.remove(this.menu);
                                 this.interactItemMenu.remove(this.lookAtButton);
                                 this.interactItemMenu.remove(this.useWithButton);
+                                this.interactItemMenu.remove(this.stirButton);
 
                                 this.interactItemMenu.remove(this.item1Button);
                                 this.interactItemMenu.remove(this.item2Button);
                                 this.interactItemMenu.remove(this.interactInnerMenu);
                                 this.interactItemMenu.remove(this.closeButton);
 
+                                this.lookAtText.destroy();
+                                this.useWithText.destroy();
+                                this.stirText.destroy();
+                                if (this.item1Text) { this.item1Text.destroy(); }
+                                if (this.item2Text) { this.item2Text.destroy(); }
+
                                 menuOpened = false;
                             }
                         }
-                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton});
+                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, stirButton: this.stirButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton, item1Text: this.item1Text, item2Text: this.item2Text, lookAtText: this.lookAtText, useWithText: this.useWithText, stirText: this.stirText});
                 } else if (this.inventory.jar_water.count === 0) {
                     // show question mark
                 }
 
                 // nothing in inventory
                 if ((this.inventory.socks.count === 0) && (this.inventory.jar_water.count === 0)) {
-                    this.showTopText(this.topText, 'You have no items in your inventory that can be added into the cauldron.');
+                    if (this.inventory.jar_fuel.count === 1) {
+                        this.showTopText(this.topText, this.dialog.cauldron[6]);
+                    } else {
+                        this.showTopText(this.topText, this.dialog.cauldron[7]);
+                    }
                 }
 
-            }, {inventory: inventory, items: this.items, item: pointer, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+                // re-add closeButton actions
+                this.closeButton.inputEnabled = true;
+                this.closeButton.events.onInputDown.add(function(closePointer) {
+                    this.interactItemMenu.remove(this.menu);
+                    this.interactItemMenu.remove(this.lookAtButton);
+                    this.interactItemMenu.remove(this.useWithButton);
+                    this.interactItemMenu.remove(this.stirButton);
+                    this.interactItemMenu.remove(this.item1Button);
+                    this.interactItemMenu.remove(this.item2Button);
+                    this.interactItemMenu.remove(this.interactInnerMenu);
+                    this.interactItemMenu.remove(closePointer);
+
+                    this.lookAtText.destroy();
+                    this.useWithText.destroy();
+                    this.stirText.destroy();
+                    if (this.item1Text) { this.item1Text.destroy(); }
+                    if (this.item2Text) { this.item2Text.destroy(); }
+
+                    menuOpened = false;
+                }, {interactItemMenu: this.interactItemMenu, menu: menuDo3, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, stirButton: this.stirButton, item1Text: this.item1Text, item2Text: this.item2Text, lookAtText: this.lookAtText, useWithText: this.useWithText, stirText: this.stirText});
+
+
+            }, {inventory: inventory, dialog: dialog, items: this.items, item: pointer, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDo3, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, stirButton: this.stirButton, item1Text: this.item1Text, item2Text: this.item2Text, lookAtText: this.lookAtText, useWithText: this.useWithText, stirText: this.stirText, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
+
+            // stir
+            this.stirButton.inputEnabled = true;
+            this.stirButton.events.onInputDown.add(function(stirPointer) {
+                var txt = '';
+                if (hasStrength) {
+                    if (this.inventory.jar_fuel.count === 1) {
+                        this.showTopText(this.topText, this.dialog.cauldron[6]);
+                    } else {
+                        if (cauldronList.length === 2) {
+                            txt = this.dialog.cauldron[4];
+                            this.inventory.jar.count = 0;
+                            this.inventory.jar_fuel.count = 1;
+
+                            console.log('inventory = ' , this.inventory);
+                        } else {
+                            txt = this.dialog.cauldron[2];
+                        }
+                    }
+                } else {
+                    txt = this.dialog.cauldron[3];
+                }
+                this.showTopText(this.topText, txt);
+            }, {topText:this.topText, showTopText:this.showTopText, inventory: inventory, dialog: dialog});
 
             // close button
             this.closeButton.inputEnabled = true;
@@ -208,17 +400,24 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.useWithButton);
+                this.interactItemMenu.remove(this.stirButton);
                 this.interactItemMenu.remove(this.item1Button);
                 this.interactItemMenu.remove(this.item2Button);
                 this.interactItemMenu.remove(this.interactInnerMenu);
                 this.interactItemMenu.remove(closePointer);
 
+                this.lookAtText.destroy();
+                this.useWithText.destroy();
+                this.stirText.destroy();
+                if (this.item1Text) { this.item1Text.destroy(); }
+                if (this.item2Text) { this.item2Text.destroy(); }
+
                 menuOpened = false;
-            }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo3, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, stirButton: this.stirButton, item1Text: this.item1Text, item2Text: this.item2Text, lookAtText: this.lookAtText, useWithText: this.useWithText, stirText: this.stirText});
         } // end if cauldron
     },
     showTopText: function(topText, str) {
         topText.text = str;
-        game.time.events.add(Phaser.Timer.SECOND * 5, function(){topText.text = '';}, this);
+        //game.time.events.add(Phaser.Timer.SECOND * 5, function(){topText.text = '';}, this);
     }
 };
