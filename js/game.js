@@ -37,6 +37,8 @@ var GAME_WIDTH = 720,
     // items
     items = null,
 
+    pickedUpJar = false,
+
     // inventory for items that can be picked up
     inventory = {
         // scene - spaceship
@@ -105,6 +107,7 @@ var GAME_WIDTH = 720,
     menuOpened = false,
 
     cauldronList = [],
+    cauldronListMax = 2,
 
     // dialog
     dialog = {
@@ -141,8 +144,14 @@ var GAME_WIDTH = 720,
         'nothing': {
             '0': 'Nothing happened!'
         },
+        'sign': {
+            '0': 'Don\'t drink the water!'
+        },
         'strength': {
             '0': 'I suddenly feel much stronger!'
+        },
+        'tree': {
+            '0': 'Chop the tree and get stronger!'
         }
     },
 

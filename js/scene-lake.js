@@ -35,7 +35,7 @@ SceneLake.prototype = {
         sign.inputEnabled = true;
         sign.events.onInputDown.add(this.interactItem, this);
 
-        tree = this.items.create(450, 320, 'tree');
+        tree = this.items.create(500, 220, 'tree');
         tree.anchor.setTo(0,0);
         tree.inputEnabled = true;
         tree.events.onInputDown.add(this.interactItem, this);

@@ -30,12 +30,10 @@ SceneTent.prototype = {
         this.interactItemMenu = game.add.group();
 
         // jar
-        if (inventory.jar.count === 0) {
-            if ((inventory.jar_water.count !== 1) || (inventory.jar_fuel.count !== 1)) {
-                jar = this.items.create(580, 400, 'jar');
-                jar.inputEnabled = true;
-                jar.events.onInputDown.add(this.interactItem, this);
-            }
+        if (!pickedUpJar) {
+            jar = this.items.create(580, 400, 'jar');
+            jar.inputEnabled = true;
+            jar.events.onInputDown.add(this.interactItem, this);
         }
 
         // cauldron
@@ -90,6 +88,8 @@ SceneTent.prototype = {
                 this.interactItemMenu.remove(this.pickUpButton);
                 this.interactItemMenu.remove(this.closeButton);
 
+                pickedUpJar = true;
+
                 menuOpened = false;
 
                 this.showTopText(this.topText, 'Picked up "' + this.inventory[this.item.key].title + '"');
@@ -140,22 +140,27 @@ SceneTent.prototype = {
                 if (this.inventory.socks.count === 1) {
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
-                        this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the cauldron.');
-                        this.inventory.socks.count = 0;
-                        this.cauldronList.push(this.inventory.socks.key);
+                        if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
+                            if (this.cauldronList.length < cauldronListMax) {
+                                this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the cauldron.');
+                                this.inventory.socks.count = 0;
+                                this.cauldronList.push(this.inventory.socks.key);
 
-                        console.log('inventory = ' , this.inventory);
+                                console.log('inventory = ' , this.inventory);
 
-                        this.interactItemMenu.remove(this.menu);
-                        this.interactItemMenu.remove(this.lookAtButton);
-                        this.interactItemMenu.remove(this.useWithButton);
+                                this.interactItemMenu.remove(this.menu);
+                                this.interactItemMenu.remove(this.lookAtButton);
+                                this.interactItemMenu.remove(this.useWithButton);
 
-                        this.interactItemMenu.remove(this.item1Button);
-                        this.interactItemMenu.remove(this.item2Button);
-                        this.interactItemMenu.remove(this.interactInnerMenu);
+                                this.interactItemMenu.remove(this.item1Button);
+                                this.interactItemMenu.remove(this.item2Button);
+                                this.interactItemMenu.remove(this.interactInnerMenu);
+                                this.interactItemMenu.remove(this.closeButton);
 
-                        menuOpened = false;
-                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button});
+                                menuOpened = false;
+                            }
+                        }
+                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton});
                 } else if (this.inventory.socks.count === 0) {
                     // show question mark
                 }
@@ -164,23 +169,28 @@ SceneTent.prototype = {
                 if (this.inventory.jar_water.count === 1) {
                     this.item2Button.inputEnabled = true;
                     this.item2Button.events.onInputDown.add(function(item2Pointer) {
-                        this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the cauldron. The jar is now empty.');
-                        this.cauldronList.push(this.inventory.jar_water.key);
-                        this.inventory.jar_water.count = 0;
-                        this.inventory.jar.count = 1;
+                        if ((this.inventory.socks.count > 0) || (this.inventory.jar_water.count > 0)) {
+                            if (this.cauldronList.length < cauldronListMax) {
+                                this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the cauldron. The jar is now empty.');
+                                this.cauldronList.push(this.inventory.jar_water.key);
+                                this.inventory.jar_water.count = 0;
+                                this.inventory.jar.count = 1;
 
-                        console.log('inventory = ' , this.inventory);
+                                console.log('inventory = ' , this.inventory);
 
-                        this.interactItemMenu.remove(this.menu);
-                        this.interactItemMenu.remove(this.lookAtButton);
-                        this.interactItemMenu.remove(this.useWithButton);
+                                this.interactItemMenu.remove(this.menu);
+                                this.interactItemMenu.remove(this.lookAtButton);
+                                this.interactItemMenu.remove(this.useWithButton);
 
-                        this.interactItemMenu.remove(this.item1Button);
-                        this.interactItemMenu.remove(this.item2Button);
-                        this.interactItemMenu.remove(this.interactInnerMenu);
+                                this.interactItemMenu.remove(this.item1Button);
+                                this.interactItemMenu.remove(this.item2Button);
+                                this.interactItemMenu.remove(this.interactInnerMenu);
+                                this.interactItemMenu.remove(this.closeButton);
 
-                        menuOpened = false;
-                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button});
+                                menuOpened = false;
+                            }
+                        }
+                    }, {topText:this.topText, showTopText:this.showTopText, inventory:this.inventory, cauldronList:this.cauldronList, interactItemMenu: this.interactItemMenu, menu: this.menu, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton, interactInnerMenu: this.interactInnerMenu, item1Button: this.item1Button, item2Button:this.item2Button, closeButton:this.closeButton});
                 } else if (this.inventory.jar_water.count === 0) {
                     // show question mark
                 }
@@ -190,7 +200,7 @@ SceneTent.prototype = {
                     this.showTopText(this.topText, 'You have no items in your inventory that can be added into the cauldron.');
                 }
 
-            }, {inventory: inventory, items: this.items, item: pointer, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, cauldronList: cauldronList, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, closeButton: this.closeButton, showTopText: this.showTopText, topText: this.topText });
 
             // close button
             this.closeButton.inputEnabled = true;
