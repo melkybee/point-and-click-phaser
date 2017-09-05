@@ -58,7 +58,7 @@ SceneLake.prototype = {
             20,
             '',
             {
-                font: "18px naz",
+                font: "18px coolstory",
                 fill: '#fff',
                 align: 'left'
             }
@@ -100,7 +100,7 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -118,7 +118,7 @@ SceneLake.prototype = {
                 this.useWithButton.y + 2,
                 'USE WITH',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -130,7 +130,7 @@ SceneLake.prototype = {
                 this.drinkButton.y + 2,
                 'DRINK',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -161,7 +161,7 @@ SceneLake.prototype = {
                     this.item1Button.y + 2,
                     item1Txt,
                     {
-                        font: "14px naz",
+                        font: "14px coolstory",
                         fill: '#000',
                         align: 'left'
                     }
@@ -273,7 +273,7 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'READ',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -314,7 +314,7 @@ SceneLake.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -339,7 +339,7 @@ SceneLake.prototype = {
                 this.chopButton.y + 2,
                 'PUNCH',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }

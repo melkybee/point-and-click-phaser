@@ -168,9 +168,9 @@ Game.prototype = {
         this.loadText = game.add.text(
             GAME_WIDTH/2,
             GAME_HEIGHT/2,
-            'Loading things, blah blah blah...',
+            'Loading things...',
             {
-                font: "24px dimbo",
+                font: "24px coolstory",
                 fill: '#fff',
                 align: 'center'
             }
@@ -219,11 +219,9 @@ Game.prototype = {
 
         game.load.image('backpack', 'img/backpack.png', 40, 40);
 
-        console.log('game = ' , game);
-
     },
     create: function() {
-        game.state.start('scene-spaceship');
+        game.state.start('title');
     },
     collectItem: function(player, item) {
         console.log('collect: ' + item.key);

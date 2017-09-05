@@ -6,13 +6,13 @@
 
     <style>
       @font-face {
-        font-family: 'dimbo'; src: url('fonts/dimbo-regular.ttf');
+        font-family: 'coolstory'; src: url('fonts/coolstory.ttf');
       }
 
       * {
         margin: 0;
         padding: 0;
-        font-family: 'dimbo', sans-serif;
+        font-family: 'coolstory', sans-serif;
       }
 
       #game_div {
@@ -21,7 +21,7 @@
       }
 
       #preload-font {
-        font-family: 'dimbo', sans-serif;
+        font-family: 'coolstory', sans-serif;
         text-indent: -9999px;
         font-size: 0;
       }
@@ -67,8 +67,8 @@
           // game.state.add('ending-2', EndingTwo);
           game.state.add('gameover', GameOver);
 
-          // go to menu
-          game.state.start('menu');
+          // load things
+          game.state.start('game');
       }
 
       /**

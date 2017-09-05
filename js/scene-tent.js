@@ -53,7 +53,7 @@ SceneTent.prototype = {
             20,
             '',
             {
-                font: "18px naz",
+                font: "18px coolstory",
                 fill: '#fff',
                 align: 'left'
             }
@@ -90,7 +90,7 @@ SceneTent.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -104,7 +104,7 @@ SceneTent.prototype = {
                 this.pickUpButton.y + 2,
                 'PICK UP',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -163,7 +163,7 @@ SceneTent.prototype = {
                 this.lookAtButton.y + 2,
                 'LOOK AT',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -198,7 +198,7 @@ SceneTent.prototype = {
                 this.useWithButton.y + 2,
                 'USE WITH',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -212,7 +212,7 @@ SceneTent.prototype = {
                 this.stirButton.y + 2,
                 'STIR',
                 {
-                    font: "14px naz",
+                    font: "14px coolstory",
                     fill: '#000',
                     align: 'left'
                 }
@@ -240,7 +240,7 @@ SceneTent.prototype = {
                     this.item1Button.y + 2,
                     item1Txt,
                     {
-                        font: "14px naz",
+                        font: "14px coolstory",
                         fill: '#000',
                         align: 'left'
                     }
@@ -255,7 +255,7 @@ SceneTent.prototype = {
                     this.item2Button.y + 2,
                     item2Txt,
                     {
-                        font: "14px naz",
+                        font: "14px coolstory",
                         fill: '#000',
                         align: 'left'
                     }

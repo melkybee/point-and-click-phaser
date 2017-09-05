@@ -8,7 +8,6 @@ Player.prototype = {
     preload: function() {
     },
     create: function() {
-        console.log('player game = ' , game);
         this.sprite = game.add.sprite(playerX, playerY, 'chibi-walk');
         this.sprite.anchor.setTo(0.5,1);
 

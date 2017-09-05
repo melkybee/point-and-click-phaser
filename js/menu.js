@@ -3,7 +3,7 @@ Title = function(){
 };
 Title.prototype = {
     preload : function() {
-//        game.load.bitmapFont('naz', 'fonts/naz.png', 'fonts/naz.fnt');
+        game.load.bitmapFont('coolstory', 'fonts/coolstory.png', 'fonts/coolstory.fnt');
     },
     create : function() {
         // add title to screen
@@ -13,7 +13,10 @@ Title.prototype = {
         // button
 //        playButton = game.add.button(GAME_WIDTH/2-190, gameTitle.y + gameTitle.height + 130, 'playButton', this.transitionGame, this, 0, 0, 0);
 
-        game.state.start('game');
+// temp -----
+        game.state.start('scene-spaceship');
+// temp -----
+
     },
     transitionGame : function() {
         // google analytics
@@ -23,7 +26,7 @@ Title.prototype = {
         tap.play('',0,0.5,false);
 
         // start game
-//        game.state.start('game');
+//        game.state.start('scene-spaceship');
     }
 };
 
