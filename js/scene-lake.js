@@ -349,6 +349,7 @@ SceneLake.prototype = {
                 this.interactItemMenu.remove(this.lookAtButton);
                 this.interactItemMenu.remove(this.chopButton);
                 this.interactItemMenu.remove(closePointer);
+                this.lookAtText.destroy();
                 this.chopText.destroy();
 
                 menuOpened = false;
