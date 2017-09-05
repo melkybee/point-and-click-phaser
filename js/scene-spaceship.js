@@ -46,6 +46,11 @@ SceneSpaceship.prototype = {
     },
     interactItem: function(pointer) {
         console.log('clicked on = ' + pointer.key);
+        if (pointer.key === 'socks') {
+            // open menuDoLookPick
+        } else if (pointer.key === 'spaceship') {
+            // open menuDoLookUse > open menuItems
+        }
     },
     collectItem: function(player, item) {
         console.log('collect: ' + item.key);

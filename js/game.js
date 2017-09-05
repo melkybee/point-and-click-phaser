@@ -60,9 +60,6 @@ var GAME_WIDTH = 720,
     // items
     items = null,
 
-    // scene - spaceship
-    socks = null,
-
     // inventory for items that can be picked up
     inventory = {
         // scene - spaceship
@@ -92,16 +89,23 @@ var GAME_WIDTH = 720,
         }
     },
 
-    // things in scenes that can be interacted with but can't be collected in inventory
+    // things in scenes that can be interacted with
 
     // scene - spaceship
-    spaceship, // USE WITH - fuel, wood
-    tree, // CHOP
+    socks = null,  // LOOK AT, PICK UP
+    spaceship = null,  // LOOK AT, USE WITH - fuel, wood
 
     // scene - tent
-    bookLake, // how to make fuel.  READ
-    bookTrees, // how to make ship parts.  READ
-    cauldron, // USE WITH - jar_water, socks.
+    cauldron = null,  // LOOK AT, USE WITH - water/socks
+    jar = null,  // LOOK AT, PICK UP, USE WITH - water, fuel
+    bookLake = null,  // READ
+    bookTrees = null,  // READ
+
+    // scene - lake
+    lake = null,  // LOOK AT, USE WITH - jar
+    tree = null,  // LOOK AT, CHOP
+    wood = null,  // LOOK AT, PICK UP
+    sign = null,  // READ
 
 
     // player properties
@@ -135,6 +139,9 @@ var GAME_WIDTH = 720,
         },
         'made_fuel': {
             '0': 'Fuel was created.'
+        },
+        'no_way': {
+            '0': 'No way!'
         },
         'nothing': {
             '0': 'Nothing happened!'
@@ -191,8 +198,18 @@ Game.prototype = {
         game.load.image('bg-tent', 'img/bg-tent.png', 720, 480);
 
         // items
-        game.load.image('crackers', 'img/items/crackers.png', 40, 40);
         game.load.image('socks', 'img/items/socks.png', 40, 40);
+
+        // item menu assets
+        game.load.image('menu-do-look-chop', 'img/menus/menuDoLookChop.png', 100, 100);
+        game.load.image('menu-do-look-pick', 'img/menus/menuDoLookPick.png', 100, 100);
+        game.load.image('menu-do-look-use', 'img/menus/menuDoLookUse.png', 100, 100);
+        game.load.image('menu-do-look-use-mix', 'img/menus/menuDoLookUseMix.png', 100, 140);
+        game.load.image('menu-do-read', 'img/menus/menuDoRead.png', 100, 60);
+
+        game.load.image('menu-items-1', 'img/menus/menuItems1.png', 120, 40);
+        game.load.image('menu-items-2', 'img/menus/menuItems2.png', 120, 80);
+        game.load.image('menu-items-3', 'img/menus/menuItems3.png', 120, 120);
 
     },
     create: function() {
