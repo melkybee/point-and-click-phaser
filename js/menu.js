@@ -11,11 +11,7 @@ Title.prototype = {
 //        gameTitle.anchor.setTo(0.5,0);
 
         // button
-//        playButton = game.add.button(GAME_WIDTH/2-190, gameTitle.y + gameTitle.height + 130, 'playButton', this.transitionGame, this, 0, 0, 0);
-
-// temp -----
-        game.state.start('scene-spaceship');
-// temp -----
+        playButton = game.add.button(GAME_WIDTH/2 - 90, GAME_HEIGHT - 100, 'playButton', this.transitionGame, this, 0, 0, 0);
 
     },
     transitionGame : function() {
@@ -23,10 +19,10 @@ Title.prototype = {
 //        gaPlugin.trackEvent(gaPluginResultHandler, gaPluginErrorHandler, "Button", "Click", "Main Menu - Play Game", new Date().getMilliseconds());
 
         // play tap sound
-        tap.play('',0,0.5,false);
+//        tap.play('',0,0.5,false);
 
         // start game
-//        game.state.start('scene-spaceship');
+        game.state.start('scene-spaceship');
     }
 };
 

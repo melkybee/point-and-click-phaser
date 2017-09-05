@@ -181,9 +181,8 @@ Game.prototype = {
 
         // menu assets
         // game.load.image('title', 'img/title.png');
-        // game.load.image('playButton', 'img/play-btn.png', 180, 44);
-        // game.load.image('mainMenuButton', 'img/main-menu-btn.png', 180, 44);
-        // game.load.image('playAgainButton', 'img/play-again-btn.png', 180, 44);
+        game.load.image('playButton', 'img/play-btn.png', 180, 44);
+        game.load.image('mainMenuButton', 'img/main-menu-btn.png', 180, 44);
 
         // player assets
         game.load.spritesheet('chibi-walk', 'img/chibi-walk.png', 100, 150, 1);
