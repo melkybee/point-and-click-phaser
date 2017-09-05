@@ -26,7 +26,7 @@ SceneSpaceship.prototype = {
         this.interactItemMenu = game.add.group();
 
         // socks
-        if (inventory.socks.count === 0) {
+        if (inventory.socks.count === 0 && (cauldronList[0] !== 'socks')) {  // TODO: not always at pos 0
             socks = this.items.create(580, 400, 'socks');
             socks.width = 40;
             socks.height = 40;
