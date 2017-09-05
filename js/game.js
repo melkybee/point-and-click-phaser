@@ -42,27 +42,32 @@ var GAME_WIDTH = 720,
         // scene - spaceship
         'socks': {
             'count': 0,
+            'title': 'A pair of sweaty socks',
             'description': 'Ew! My smelly socks still fresh with perspiration.'
         },
 
         // scene - tent
         'jar': {
             'count': 0,
-            'description': 'Jar'
+            'title': 'An empty glass jar',
+            'description': 'Ah! I wonder what I can fill this up with.'
         },
         'jar_fuel': {
             'count': 0,
-            'description': 'Jar full of fuel'
+            'title': 'A jar full of fuel',
+            'description': 'Yay! Now I have a jar full of fuel!'
         },
 
         // scene - lake
         'jar_water' : {
             'count': 0,
-            'description': 'Jar full of water'
+            'title': 'A jar full of water',
+            'description': 'The jar is now full of water. I better not drink it.'
         },
         'wood': {
             'count': 0,
-            'description': 'Wood'
+            'title': 'Fresh plastic wood',
+            'description': 'Great, now I can rebuild my ship with this mysterious plastic wood.'
         }
     },
 
