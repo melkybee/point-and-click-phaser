@@ -41,8 +41,6 @@ SceneTent.prototype = {
         cauldron.inputEnabled = true;
         cauldron.events.onInputDown.add(this.interactItem, this);
 
-        console.log('player ' , player);
-
         // text
         this.topText = game.add.text(
             20,
@@ -59,7 +57,6 @@ SceneTent.prototype = {
     update: function() {
     },
     interactItem: function(pointer) {
-        console.log('clicked on = ' + pointer.key);
         if (pointer.key === 'jar') {
             if (menuOpened) {
                 return;
@@ -76,7 +73,6 @@ SceneTent.prototype = {
             this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
-                console.log('item = ' , this.item);
 
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
@@ -121,7 +117,6 @@ SceneTent.prototype = {
             this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
-                console.log('item = ' , this.item);
 
                 // item 1
                 if (this.inventory.socks.count === 1) {
@@ -129,10 +124,11 @@ SceneTent.prototype = {
                     this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
-                        console.log('item 1 ');
                         this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the cauldron.');
                         this.inventory.socks.count = 0;
                         this.cauldronList.push(this.inventory.socks.key);
+
+                        console.log('inventory = ' , this.inventory);
 
                         this.interactItemMenu.remove(this.menu);
                         this.interactItemMenu.remove(this.lookAtButton);
@@ -152,9 +148,12 @@ SceneTent.prototype = {
                         this.item2Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 44, 'menu-item-btn');
                         this.item2Button.inputEnabled = true;
                         this.item2Button.events.onInputDown.add(function(item2Pointer) {
-                            console.log('item 2');
                             this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the cauldron. The jar is now empty.');
                             this.cauldronList.push(this.inventory.jar_water.key);
+                            this.inventory.jar_water.count = 0;
+                            this.inventory.jar.count = 1;
+
+                            console.log('inventory = ' , this.inventory);
 
                             this.interactItemMenu.remove(this.menu);
                             this.interactItemMenu.remove(this.lookAtButton);
@@ -174,9 +173,12 @@ SceneTent.prototype = {
                     this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
-                        console.log('item 1 ');
                         this.showTopText(this.topText, 'Added water from the "' + this.inventory.jar.title + '" into the cauldron. The jar is now empty.');
                         this.cauldronList.push(this.inventory.jar_water.key);
+                        this.inventory.jar_water.count = 0;
+                        this.inventory.jar.count = 1;
+
+                        console.log('inventory = ' , this.inventory);
 
                         this.interactItemMenu.remove(this.menu);
                         this.interactItemMenu.remove(this.lookAtButton);
@@ -196,10 +198,11 @@ SceneTent.prototype = {
                         this.item2Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 44, 'menu-item-btn');
                         this.item2Button.inputEnabled = true;
                         this.item2Button.events.onInputDown.add(function(item2Pointer) {
-                            console.log('item 2');
                             this.showTopText(this.topText, 'Added "' + this.inventory.socks.title + '" into the cauldron.');
                             this.inventory.socks.count = 0;
                             this.cauldronList.push(this.inventory.socks.key);
+
+                            console.log('inventory = ' , this.inventory);
 
                             this.interactItemMenu.remove(this.menu);
                             this.interactItemMenu.remove(this.lookAtButton);
@@ -230,7 +233,6 @@ SceneTent.prototype = {
         } // end if cauldron
     },
     showTopText: function(topText, str) {
-        console.log('t ' , topText);
         topText.text = str;
         game.time.events.add(Phaser.Timer.SECOND * 5, function(){topText.text = '';}, this);
     }

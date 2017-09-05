@@ -40,8 +40,6 @@ SceneLake.prototype = {
         }
         */
 
-        console.log('player ' , player);
-
         this.topText = game.add.text(
             20,
             20,
@@ -53,13 +51,10 @@ SceneLake.prototype = {
             }
         );
 
-        console.log('tt ' , this.topText);
-
     },
     update: function() {
     },
     interactItem: function(pointer) {
-        console.log('clicked on = ' + pointer.key);
         if (pointer.key === 'lake') {
             if (menuOpened) {
                 return;
@@ -77,15 +72,12 @@ SceneLake.prototype = {
             this.useWithButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.useWithButton.inputEnabled = true;
             this.useWithButton.events.onInputDown.add(function(useWithPointer) {
-                console.log('item = ' , this.item);
-
                 // item 1
                 if (this.inventory.jar.count === 1) {
                     this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-1');
                     this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
-                        console.log('item 1 ');
                         this.showTopText(this.topText, 'The jar is now full of water from the lake.');
                         this.inventory.jar_water.count = 1;
                         this.inventory.jar.count = 0;
@@ -116,7 +108,6 @@ SceneLake.prototype = {
         } // end if lake
     },
     showTopText: function(topText, str) {
-        console.log('t ' , topText);
         topText.text = str;
         game.time.events.add(Phaser.Timer.SECOND * 5, function(){topText.text = '';}, this);
     }

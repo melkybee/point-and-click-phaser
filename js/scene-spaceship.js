@@ -43,8 +43,6 @@ SceneSpaceship.prototype = {
             }
         }
 
-        console.log('player ' , player);
-
         this.topText = game.add.text(
             20,
             20,
@@ -56,13 +54,10 @@ SceneSpaceship.prototype = {
             }
         );
 
-        console.log('tt ' , this.topText);
-
     },
     update: function() {
     },
     interactItem: function(pointer) {
-        console.log('clicked on = ' + pointer.key);
         if (pointer.key === 'socks') {
             menuOpened = true;
             // open menu-do-2
@@ -76,11 +71,9 @@ SceneSpaceship.prototype = {
             this.pickUpButton = this.interactItemMenu.create(menuDo2.x + 2, menuDo2.y + 44, 'menu-item-btn');
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
-                console.log('item = ' , this.item);
 
                 this.inventory[this.item.key].count = 1;
                 this.items.remove(this.item);
-                console.log('inventory = ' , this.inventory);
 
                 this.interactItemMenu.remove(this.menu);
                 this.interactItemMenu.remove(this.lookAtButton);
@@ -106,7 +99,6 @@ SceneSpaceship.prototype = {
         }
     },
     showTopText: function(topText, str) {
-        console.log('t ' , topText);
         topText.text = str;
         game.time.events.add(Phaser.Timer.SECOND * 5, function(){topText.text = '';}, this);
     }
