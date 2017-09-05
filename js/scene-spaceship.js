@@ -1,6 +1,6 @@
 SceneSpaceship = function() {
     this.items = null;
-    this.inputHandler = null;
+    this.interactItemMenu = null;
 };
 
 SceneSpaceship.prototype = {
@@ -14,18 +14,20 @@ SceneSpaceship.prototype = {
         // player
         player.create();
 
+        console.log('ship game = ' , game);
+
         // items
         this.items = game.add.group();
-        this.items.enableBody = true;
-        this.items.physicsBodyType = Phaser.Physics.ARCADE;
 
-        console.log('items ' , this.items);
+        // interactItemMenu
+        this.interactItemMenu = game.add.group();
 
         // socks
         if (inventory.socks.count === 0) {
             socks = this.items.create(580, 400, 'socks');
-            socks.body.setSize(40, 40, 0, 0);
-            socks.anchor.setTo(0.5,0.5);
+            socks.width = 40;
+            socks.height = 40;
+            socks.anchor.setTo(0,0);
             socks.inputEnabled = true;
             socks.events.onInputDown.add(this.interactItem, this);
         }
@@ -38,9 +40,25 @@ SceneSpaceship.prototype = {
     interactItem: function(pointer) {
         console.log('clicked on = ' + pointer.key);
         if (pointer.key === 'socks') {
-            // open menuDoLookPick
+            menuOpened = true;
+            // open menu-do-look-pick
+            menuDoLookPick = this.interactItemMenu.create(socks.x, socks.y - 100, 'menu-do-look-pick');
+            menuDoLookPick.inputEnabled = true;
+            menuDoLookPick.events.onInputDown.add(function(thisPointer) {
+                console.log('clicked on = ' , thisPointer);
+                console.log('pointer ' + thisPointer.y);
+                console.log('menu ' + menuDoLookPick.y);
+                if (thisPointer.y < (menuDoLookPick.height+40)) {
+                    console.log('look at');
+                } else if ((thisPointer.y >= (menuDoLookPick.height+40)) && (thisPointer.y < (menuDoLookPick.height+80))) {
+                    console.log('pick up');
+                }
+            }, this);
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }
+    },
+    interactItemMenu: function(pointer) {
+        console.log('clicked on = ' , pointer);
     }
 };

@@ -88,6 +88,8 @@ var GAME_WIDTH = 720,
     // player properties
     hasStrength = false, // 'true' after chopping wood
 
+    menuOpened = false,
+
 
     // dialog
     dialog = {
@@ -187,6 +189,8 @@ Game.prototype = {
         game.load.image('menu-items-1', 'img/menus/menuItems1.png', 120, 40);
         game.load.image('menu-items-2', 'img/menus/menuItems2.png', 120, 80);
         game.load.image('menu-items-3', 'img/menus/menuItems3.png', 120, 120);
+
+        console.log('game = ' , game);
 
     },
     create: function() {

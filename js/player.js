@@ -8,9 +8,8 @@ Player.prototype = {
     preload: function() {
     },
     create: function() {
+        console.log('player game = ' , game);
         this.sprite = game.add.sprite(playerX, playerY, 'chibi-walk');
-        game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-        this.sprite.body.setSize(100, 150);
         this.sprite.anchor.setTo(0.5,1);
 
         // move character on input down/tap
@@ -20,6 +19,10 @@ Player.prototype = {
         var pointerX = pointer.x,
             pointerY = pointer.y,
             duration;
+
+        if (menuOpened) {
+            return;
+        }
 
         // player facing left/right
         if (pointer.x > this.sprite.x) {
@@ -75,15 +78,6 @@ Player.prototype = {
         } else {
             this.sprite.animations.stop();
         }
-    },
-    render: function() {
-        game.debug.bodyInfo(this.sprite, 90, 90);
-        game.debug.body(this.sprite);
-    },
-    gameCollide: function() {
-        var spr = this.sprite.body;
-
-        spr.gravity.x = 0;
     },
     changeScene: function(currentScene, direction) {
         if (currentScene === 'scene-spaceship') {
