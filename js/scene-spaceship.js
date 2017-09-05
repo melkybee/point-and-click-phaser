@@ -3,6 +3,7 @@ SceneSpaceship = function() {
     this.interactItemMenu = null;
     this.lookAtButton = null;
     this.pickUpButton = null;
+    this.topText = null;
 };
 
 SceneSpaceship.prototype = {
@@ -48,14 +49,11 @@ SceneSpaceship.prototype = {
             this.lookAtButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 2, 'menu-item-btn');
             this.lookAtButton.inputEnabled = true;
             this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
-                console.log('clicked on lookAtPointer = ' , lookAtPointer);
-            }, {game:game, player:player});
+                this.showTopText(inventory.socks.description);
+            }, {showTopText:this.showTopText});
             this.pickUpButton = this.interactItemMenu.create(menuDoLookPick.x + 2, menuDoLookPick.y + 44, 'menu-item-btn');
             this.pickUpButton.inputEnabled = true;
             this.pickUpButton.events.onInputDown.add(function(pickUpPointer) {
-                console.log('clicked on pickUpPointer = ' , pickUpPointer);
-                console.log('game = ' , this.game);
-                console.log('player = ' , this.player);
                 console.log('item = ' , this.item);
                 
                 this.inventory[this.item.key].count = 1;
@@ -68,12 +66,22 @@ SceneSpaceship.prototype = {
 
                 menuOpened = false;
 
-            }, {game: game, player: player, inventory: inventory, items: this.items, item:pointer, interactItemMenu:this.interactItemMenu, menu:menuDoLookPick, lookAtButton:this.lookAtButton, pickUpButton:this.pickUpButton});
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDoLookPick, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton});
         } else if (pointer.key === 'spaceship') {
             // open menuDoLookUse > open menuItems
         }
     },
-    interactItemMenu: function() {
-        console.log('pick up = ' , item.key);
+    showTopText: function(str) {
+        this.topText = game.add.text(
+            20,
+            20,
+            str,
+            {
+                font: "24px dimbo",
+                fill: '#fff',
+                align: 'left'
+            }
+        );
+        game.time.events.add(Phaser.Timer.SECOND * 5, function(){this.topText.destroy();}, this);
     }
 };

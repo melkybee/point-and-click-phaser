@@ -42,7 +42,7 @@ var GAME_WIDTH = 720,
         // scene - spaceship
         'socks': {
             'count': 0,
-            'description': 'Socks'
+            'description': 'Ew! My smelly socks still fresh with perspiration.'
         },
 
         // scene - tent
