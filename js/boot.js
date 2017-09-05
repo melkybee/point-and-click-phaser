@@ -162,10 +162,16 @@ var GAME_WIDTH = 720,
     // dialog
     dialog = {
         'book_lake': {
-            '0': 'Properties of lake, how to make fuel'
+            '0': 'Properties of lake, how to make fuel.'
         },
         'book_trees': {
-            '0': 'Properties of wood, using it on vehicles'
+            '0': 'Properties of wood, using it on vehicles.'
+        },
+        'cauldron': {
+            '0': 'Combine 3 items to make something cool.'
+        },
+        'cauldron_contains': {
+            '0': 'The cauldron contains: '
         },
         'crate_closed': {
             '0': 'The crate will not budge. I am way too weak.'
@@ -173,41 +179,63 @@ var GAME_WIDTH = 720,
         'door_locked': {
             '0': 'The door is locked. I need a key...'
         },
+        'ending': {
+            'spaceship': {
+                '0': 'Spaceship ending!'
+            },
+            'wormhole': {
+                '0': 'Wormhole ending!'
+            },
+            'death_by_milk': {
+                '0': 'Death by milk ending!'
+            }
+        },
         'made_fuel': {
             '0': 'Fuel was created.'
         },
         'made_wormhole': {
             '0': 'A wormhole was created.'
         },
-        'man_boat': {
-            '0': 'I can take you across the lake! Would you like to cross?'
-        },
-        'man_fed_right': {
-            '0': 'Wow! That is perfect! Thank you! Nom nom nom...'
-        },
-        'man_fed_wrong': {
-            '0': 'That looks gross! Got anything else to eat?'
-        },
-        'man_hungry': {
-            '0': 'Feed me! I want something I have never eaten before!'
+        'man': {
+            'boat': {
+                '0': 'I can take you across the lake! Would you like to cross?'
+            },
+            'hungry': {
+                '0': 'You shall not pass!',
+                '1': 'Feed me and I will let you through!',
+                '2': 'Here is a hint: I want something I have never eaten before!'
+            },
+            'fed_right': {
+                '0': 'Wow! That is perfect! Thank you! Nom nom nom...',
+                '1': 'From now on, if you want to cross the lake, ask me! I will gladly take you there!'
+            },
+            'fed_wrong': {
+                '0': 'Tired of those! Got anything else to eat?'
+            }
         },
         'nothing': {
             '0': 'Nothing happened!'
         },
         'strength': {
-            '0': 'I feel much stronger!'
+            '0': 'I suddenly feel much stronger!'
         }
     },
 
     menuOptions = {
-        'DRINK': 'DRINK',  // for spoiled milk
-        'GIVE_TO': 'GIVE TO',
-        'LOOK_AT': 'LOOK AT',
+        // viewing from scene
+        'GIVE': 'GIVE',
+        'OPEN': 'OPEN',
         'PICK_UP': 'PICK UP',
         'PULL': 'PULL',
-        'USE': 'USE',
-        'WITH': 'WITH'
-    }
+        'TALK_TO': 'TALK TO',
+        'USE_WITH': 'USE WITH',
+
+        // viewing from either inventory or scene
+        'DRINK': 'DRINK',  // for spoiled milk
+        'LOOK_AT': 'LOOK AT'
+    },
+
+    isGameOver;
 
 
 
