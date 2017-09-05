@@ -33,12 +33,10 @@ SceneLake.prototype = {
         /*
         // wood
         if (inventory.wood.count === 0) {
-            if ((lakeList[0] !== 'wood') || (lakeList[1] !== 'wood')) {
-                wood = this.items.create(580, 400, 'wood');
-                wood.anchor.setTo(0,0);
-                wood.inputEnabled = true;
-                wood.events.onInputDown.add(this.interactItem, this);
-            }
+            wood = this.items.create(580, 400, 'wood');
+            wood.anchor.setTo(0,0);
+            wood.inputEnabled = true;
+            wood.events.onInputDown.add(this.interactItem, this);
         }
         */
 
@@ -106,7 +104,7 @@ SceneLake.prototype = {
                 } else {
                     this.showTopText(this.topText, 'You have no items in your inventory use with the lake.');
                 }
-            }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, lakeList: lakeList, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);
