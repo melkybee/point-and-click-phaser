@@ -30,6 +30,16 @@ SceneLake.prototype = {
         lake.inputEnabled = true;
         lake.events.onInputDown.add(this.interactItem, this);
 
+        sign = this.items.create(420, 400, 'sign');
+        sign.anchor.setTo(0,0);
+        sign.inputEnabled = true;
+        sign.events.onInputDown.add(this.interactItem, this);
+
+        tree = this.items.create(450, 320, 'tree');
+        tree.anchor.setTo(0,0);
+        tree.inputEnabled = true;
+        tree.events.onInputDown.add(this.interactItem, this);
+
         /*
         // wood
         if (inventory.wood.count === 0) {
@@ -51,8 +61,16 @@ SceneLake.prototype = {
             }
         );
 
+        // backpack
+        backpack = game.add.sprite(660, 10, 'backpack');
+        backpack.inputEnabled = true;
+        backpack.events.onInputDown.add(this.openInventory, this);
+
     },
     update: function() {
+    },
+    openInventory: function(pointer) {
+
     },
     interactItem: function(pointer) {
         if (pointer.key === 'lake') {
@@ -105,7 +123,51 @@ SceneLake.prototype = {
 
                 menuOpened = false;
             }, {interactItemMenu: this.interactItemMenu, menu: menuDo2, lookAtButton: this.lookAtButton, useWithButton: this.useWithButton});
-        } // end if lake
+        } else if (pointer.key === 'sign') {
+            if (menuOpened) {
+                return;
+            }
+            menuOpened = true;
+            // open menu-do-2
+            menuDo1 = this.interactItemMenu.create(sign.x + 0, sign.y - 60, 'menu-do-1');
+            this.closeButton = this.interactItemMenu.create(menuDo1.x + 102, menuDo1.y - 42, 'menu-close-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 2, menuDo1.y + 2, 'menu-item-btn');
+            this.lookAtButton.inputEnabled = true;
+            this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                var txt = dialog.sign[0];
+                this.showTopText(this.topText, txt);
+            }, {topText:this.topText, showTopText:this.showTopText});
+            this.closeButton.inputEnabled = true;
+            this.closeButton.events.onInputDown.add(function(closePointer) {
+                this.interactItemMenu.remove(this.menu);
+                this.interactItemMenu.remove(this.lookAtButton);
+                this.interactItemMenu.remove(closePointer);
+
+                menuOpened = false;
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo1, lookAtButton: this.lookAtButton});
+        } else if (pointer.key === 'tree') {
+            if (menuOpened) {
+                return;
+            }
+            menuOpened = true;
+            // open menu-do-2
+            menuDo1 = this.interactItemMenu.create(sign.x + 0, sign.y - 60, 'menu-do-1');
+            this.closeButton = this.interactItemMenu.create(menuDo1.x + 102, menuDo1.y - 42, 'menu-close-btn');
+            this.lookAtButton = this.interactItemMenu.create(menuDo1.x + 2, menuDo1.y + 2, 'menu-item-btn');
+            this.lookAtButton.inputEnabled = true;
+            this.lookAtButton.events.onInputDown.add(function(lookAtPointer) {
+                var txt = dialog.sign[0];
+                this.showTopText(this.topText, txt);
+            }, {topText:this.topText, showTopText:this.showTopText});
+            this.closeButton.inputEnabled = true;
+            this.closeButton.events.onInputDown.add(function(closePointer) {
+                this.interactItemMenu.remove(this.menu);
+                this.interactItemMenu.remove(this.lookAtButton);
+                this.interactItemMenu.remove(closePointer);
+
+                menuOpened = false;
+            }, {interactItemMenu: this.interactItemMenu, menu: menuDo1, lookAtButton: this.lookAtButton});
+        } // end if
     },
     showTopText: function(topText, str) {
         topText.text = str;

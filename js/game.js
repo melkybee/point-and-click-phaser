@@ -95,6 +95,10 @@ var GAME_WIDTH = 720,
     sign = null,  // READ
 
 
+    // backpack to inventory menu
+    backpack = null,
+
+
     // player properties
     hasStrength = false, // 'true' after chopping wood
 
@@ -194,6 +198,8 @@ Game.prototype = {
 
         game.load.image('cauldron', 'img/items/cauldron.png', 100, 100);
         game.load.image('lake', 'img/items/lake.png', 400, 150);
+        game.load.image('sign', 'img/items/sign.png', 40, 40);
+        game.load.image('tree', 'img/items/tree.png', 100, 150);
 
         // item menu assets
         game.load.image('menu-do-1', 'img/menus/menuDo1.png', 100, 60);
@@ -207,6 +213,8 @@ Game.prototype = {
         game.load.image('menu-item-btn', 'img/menus/menuItemButton.png', 96, 36);
 
         game.load.image('menu-close-btn', 'img/menus/closeButton.png', 40, 40);
+
+        game.load.image('backpack', 'img/backpack.png', 40, 40);
 
         console.log('game = ' , game);
 
