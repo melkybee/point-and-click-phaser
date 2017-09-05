@@ -102,8 +102,6 @@ var GAME_WIDTH = 720,
 
     cauldronList = [],
 
-    jarState = 'EMPTY',  // WATER, FUEL
-
     // dialog
     dialog = {
         'book_lake': {

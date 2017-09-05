@@ -80,14 +80,13 @@ SceneLake.prototype = {
                 console.log('item = ' , this.item);
 
                 // item 1
-                if (this.inventory.jar.count === 1 && this.jarState === 'EMPTY') {
+                if (this.inventory.jar.count === 1) {
                     this.interactInnerMenu = this.interactItemMenu.create(menuDo2.x + 100, menuDo2.y, 'menu-items-1');
                     this.item1Button = this.interactItemMenu.create(menuDo2.x + 122, menuDo2.y + 2, 'menu-item-btn');
                     this.item1Button.inputEnabled = true;
                     this.item1Button.events.onInputDown.add(function(item1Pointer) {
                         console.log('item 1 ');
                         this.showTopText(this.topText, 'The jar is now full of water from the lake.');
-                        this.jarState = 'WATER';
                         this.inventory.jar_water.count = 1;
                         this.inventory.jar.count = 0;
 
@@ -104,7 +103,7 @@ SceneLake.prototype = {
                 } else {
                     this.showTopText(this.topText, 'You have no items in your inventory use with the lake.');
                 }
-            }, {inventory: inventory, items: this.items, item: pointer, jarState: jarState, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
+            }, {inventory: inventory, items: this.items, item: pointer, interactItemMenu: this.interactItemMenu, menu: menuDo2, interactInnerMenu: this.interactInnerMenu, item1Button:this.item1Button, item2Button:this.item2Button, lookAtButton: this.lookAtButton, pickUpButton: this.pickUpButton, useWithButton: this.useWithButton, showTopText: this.showTopText, topText: this.topText });
             this.closeButton.inputEnabled = true;
             this.closeButton.events.onInputDown.add(function(closePointer) {
                 this.interactItemMenu.remove(this.menu);

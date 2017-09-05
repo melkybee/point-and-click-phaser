@@ -27,7 +27,13 @@ SceneSpaceship.prototype = {
 
         // socks
         if (inventory.socks.count === 0) {
-            if ((cauldronList[0] !== 'socks') || (cauldronList[1] !== 'socks')) {
+            var foundSocks = false;
+            for (var i = 0; i < cauldronList.length; i++) {
+                if (cauldronList[i] === 'socks') {
+                    foundSocks = true;
+                }
+            }
+            if (!foundSocks) {
                 socks = this.items.create(580, 400, 'socks');
                 socks.width = 40;
                 socks.height = 40;
